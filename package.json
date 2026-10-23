@@ -1,0 +1,13 @@
+{
+  "name": "oyklane-www",
+  "private": true,
+  "engines": {
+    "node": ">=20 <=24"
+  },
+  "packageManager": "pnpm@10.34.5",
+  "scripts": {
+    "dev": "pnpm --filter @shopcycle/www dev",
+    "build": "pnpm --filter @shopcycle/www build",
+    "start": "pnpm --filter @shopcycle/www start"
+  }
+}
