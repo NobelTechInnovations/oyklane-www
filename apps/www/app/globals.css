@@ -280,21 +280,6 @@ button {
   font: 800 20px/1 var(--font-display);
   letter-spacing: -0.03em;
 }
-.logo__mark {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0078d4 0%, #2b9fe6 100%);
-  position: relative;
-  flex: none;
-}
-.logo__mark::after {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border-radius: 50%;
-  border: 2.5px solid #fff;
-}
 .nav__links {
   display: flex;
   align-items: center;

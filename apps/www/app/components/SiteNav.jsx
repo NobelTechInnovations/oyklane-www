@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon, I } from "./Icon";
 import { APP_URL } from "./site";
+import { OyklaneLogo } from "./OyklaneLogo";
 
 const FEATURES = [
   { href: "/#builder", icon: I.store, title: "Store builder", text: "Eight free themes, drag-and-drop sections, no code." },
@@ -38,8 +39,7 @@ export function SiteNav() {
       </a>
       <div className="wrap nav__inner">
         <Link href="/" className="logo" aria-label="Oyklane home">
-          <span className="logo__mark" aria-hidden="true" />
-          Oyklane
+          <OyklaneLogo height={30} />
         </Link>
         <nav aria-label="Main">
           <ul className="nav__links">

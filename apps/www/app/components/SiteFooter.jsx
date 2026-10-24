@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { APP_URL, DEMO_URL, MARKET_URL } from "./site";
+import { OyklaneLogo } from "./OyklaneLogo";
 
 export function SiteFooter() {
   return (
@@ -7,9 +8,8 @@ export function SiteFooter() {
       <div className="wrap">
         <div className="footer__grid">
           <div>
-            <Link href="/" className="logo">
-              <span className="logo__mark" aria-hidden="true" />
-              Oyklane
+            <Link href="/" className="logo" aria-label="Oyklane home">
+              <OyklaneLogo height={30} />
             </Link>
             <p className="muted" style={{ marginTop: 14, maxWidth: "34ch", fontSize: 14.5 }}>
               Your own online store, made for selling in India — store, checkout, payments, GST, WhatsApp and ads in one place.
