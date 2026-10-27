@@ -57,6 +57,23 @@ const faq = (pricing) => [
   ["Can I use my own domain?", "Yes. Every store gets a free yourname.oyklane.com address. Point your own domain at it from Settings ▸ Domains — SSL is set up for you."],
 ];
 
+// Real brands selling on Oyklane today — product proof, not stock photos.
+// Only what their own stores say they sell.
+const BRANDS = [
+  { name: "The Laxmira Studio", what: "Designer clothing, for sale and for rent", url: "https://laxmira.net" },
+  { name: "Sukirti Spices", what: "Indian spices", url: "https://sukirti-spices.oyklane.com" },
+  { name: "Dorangi", what: null, url: "https://dorangi.oyklane.com" },
+  { name: "Sonchiri", what: null, url: null },
+];
+
+// Launch → manage → grow: the order a seller actually goes in.
+const STEPS = [
+  { title: "Launch", text: "Pick a theme, add products, connect your domain and switch on UPI, cards and cash on delivery. Live the same day.", points: ["Free themes, edited without code", "Your own domain and logo", "UPI, cards, wallets and COD"] },
+  { title: "Manage", text: "Every order, shipment, invoice and customer in one place — built for how Indian orders actually work.", points: ["GST invoices, made for you", "Shipping with COD payouts", "Inventory, rentals and returns"] },
+  { title: "Grow", text: "Bring shoppers back and turn browsers into buyers with WhatsApp, ads and an AI sales assistant.", points: ["WhatsApp updates and offers", "Meta and Google ads", "Siyaa AI: personal deals that convert"] },
+];
+const SELLS = ["Fashion & ethnic wear", "Outfit rentals", "Spices & food", "Beauty & personal care", "Jewellery", "Home & décor"];
+
 export default async function HomePage() {
   const [pricing, apps] = await Promise.all([getPlans(), getApps()]);
   const cloud = INTEGRATIONS.filter((x) => x.status !== "soon" && (x.logo.brand || x.logo.word)).slice(0, 16);
@@ -69,35 +86,36 @@ export default async function HomePage() {
       <section className="hero">
         <div className="wrap hero__grid">
           <div className="hero__copy">
-            <h1 className="h1">Your own online store, made for selling in India.</h1>
+            <h1 className="h1">The e-commerce platform for Indian brands.</h1>
             <p className="lead">
-              Design your store without code. Take UPI, cards and cash on delivery, send GST invoices, keep customers updated on WhatsApp and run ads on Meta and Google — from one dashboard.
+              Launch your own store, run every order from one place and grow with WhatsApp, ads and AI — built for UPI, cash on delivery and GST from day one.
             </p>
             <div className="hero__ctas">
               <a href={`${APP_URL}/register`} className="btn btn--primary btn--lg">
                 Start free trial
               </a>
-              <Link href="/pricing" className="btn btn--ghost btn--lg">
-                See pricing
-              </Link>
+              {DEMO_URL ? (
+                <a href={DEMO_URL} target="_blank" rel="noopener" className="btn btn--ghost btn--lg">
+                  See a live store
+                </a>
+              ) : (
+                <Link href="/pricing" className="btn btn--ghost btn--lg">
+                  See pricing
+                </Link>
+              )}
             </div>
             <ul className="proof">
-              <li><Icon d={I.check} /> {pricing.trialDays}-day free trial</li>
-              <li><Icon d={I.check} /> No card needed to start</li>
-              <li><Icon d={I.check} /> Live on your own domain</li>
+              <li><Icon d={I.check} /> {pricing.trialDays}-day free trial, no card</li>
+              <li><Icon d={I.check} /> No product limits</li>
+              <li><Icon d={I.check} /> Plans from {inr(lowest)}/month</li>
             </ul>
-            {DEMO_URL && (
-              <p className="hero__alt">
-                <a href={DEMO_URL} target="_blank" rel="noopener">See a live store</a>
-              </p>
-            )}
           </div>
 
           <div className="hero-visual" aria-label="An Oyklane store with a new UPI order, a WhatsApp update and a GST invoice" role="img">
             <div className="browser hero-visual__frame">
               <div className="browser__bar">
                 <span className="browser__dots"><i /><i /><i /></span>
-                <span className="browser__url">loomwear.oyklane.com</span>
+                <span className="browser__url">yourbrand.in</span>
               </div>
               <div className="browser__screen">
                 <img src="/showcase/atelier.webp" alt="" width="1440" height="1000" fetchPriority="high" />
@@ -112,7 +130,7 @@ export default async function HomePage() {
             </div>
             <div className="float-card float-card--wa">
               <span className="float-card__head"><Mark brand="whatsapp" size={16} /> WhatsApp</span>
-              <p>Hi Ananya, your order #1043 from Loomwear is on its way with Delhivery.</p>
+              <p>Hi Ananya, your order #1043 is on its way with Delhivery.</p>
               <small>Sent automatically</small>
             </div>
             <div className="float-card float-card--gst">
@@ -138,6 +156,62 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* ── Real brands ── */}
+      <section className="section section--tight" id="brands" aria-labelledby="brands-title">
+        <div className="wrap">
+          <h2 className="brands__title" id="brands-title">Indian brands already selling on Oyklane</h2>
+          <ul className="brands">
+            {BRANDS.map((b) => (
+              <li key={b.name} className="brand-card">
+                <b>{b.name}</b>
+                {b.what && <span>{b.what}</span>}
+                {b.url ? (
+                  <a href={b.url} target="_blank" rel="noopener" className="brand-card__link">
+                    Visit store
+                  </a>
+                ) : (
+                  <span className="brand-card__live">Live on Oyklane</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── Launch, manage, grow ── */}
+      <section className="section section--alt" id="how">
+        <div className="wrap">
+          <div className="head">
+            <h2 className="h2">From first order to a growing brand</h2>
+            <p className="lead">One platform for every stage — no plugins to stitch together, no developer needed.</p>
+          </div>
+          <ol className="steps">
+            {STEPS.map((st, i) => (
+              <li key={st.title} className="step">
+                <span className="step__n">{i + 1}</span>
+                <h3 className="h3">{st.title}</h3>
+                <p>{st.text}</p>
+                <ul>
+                  {st.points.map((p) => (
+                    <li key={p}>
+                      <Icon d={I.check} /> {p}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+          <div className="sells">
+            <span className="sells__label">Made for what you sell</span>
+            <ul>
+              {SELLS.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* ── Strengths ── */}
       <section className="band band--dark" id="why">
         <div className="wrap">
@@ -147,7 +221,7 @@ export default async function HomePage() {
           </div>
           <ul className="stats">
             <li><b>5</b><span>payment gateways, plus cash on delivery</span></li>
-            <li><b>{Number.isFinite(lowest) ? inr(lowest) : "₹199"}</b><span>a month to start, plus GST</span></li>
+            <li><b>{inr(lowest)}</b><span>a month to start, plus GST</span></li>
             <li><b>{pricing.trialDays} days</b><span>free trial, no card needed</span></li>
             <li><b>₹0</b><span>setup fee and product limits</span></li>
           </ul>
@@ -422,8 +496,8 @@ export default async function HomePage() {
       <section className="band band--violet">
         <div className="wrap cta">
           <div>
-            <h2 className="h2">Open your store this week.</h2>
-            <p className="lead">Pick a theme, add a few products, switch on payments and share your link.</p>
+            <h2 className="h2">Launch your brand this week.</h2>
+            <p className="lead">Start free for {pricing.trialDays} days — pick a theme, add products, switch on payments and share your link.</p>
           </div>
           <div className="hero__ctas">
             <a href={`${APP_URL}/register`} className="btn btn--white btn--lg">

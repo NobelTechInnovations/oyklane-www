@@ -6,7 +6,7 @@ import { Reveal } from "./components/Reveal";
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://oyklane.com"),
   title: {
-    default: "Oyklane — Your online store, made for selling in India",
+    default: "Oyklane — The e-commerce platform for Indian brands",
     template: "%s · Oyklane",
   },
   description:
@@ -15,8 +15,8 @@ export const metadata = {
   // OAuth branding needs oyklane.com verified). Set the code on Vercel.
   ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }),
   openGraph: {
-    title: "Oyklane — Your online store, made for selling in India",
-    description: "Storefront, One-Click Checkout, payments, GST and growth apps for Indian brands.",
+    title: "Oyklane — The e-commerce platform for Indian brands",
+    description: "Launch, manage and grow your own brand — UPI, COD and GST built in.",
     images: ["/showcase/atelier.webp"],
     type: "website",
   },
@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         {/* Plus Jakarta Sans for everything (docs/brand-guidelines.md). */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" />
       </head>
       <body>
         <SiteNav />

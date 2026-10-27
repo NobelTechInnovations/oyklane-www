@@ -5,7 +5,7 @@
    below comes from them. */
 :root {
   --bg: #ffffff;
-  --bg-2: #eef6fd;
+  --bg-2: #f1f5fd;
   --surface: #ffffff;
   --surface-2: #f4f8fc;
   --surface-3: #e8eff7;
@@ -14,10 +14,10 @@
   --text: #111827;
   --muted: #4b5563;
   --subtle: #7b8494;
-  --violet: #0078d4;
-  --violet-2: #005a9e;
-  --violet-soft: #e5f1fb;
-  --violet-ink: #005a9e;
+  --violet: #1f5fd6;
+  --violet-2: #1a4fb3;
+  --violet-soft: #e9effc;
+  --violet-ink: #1a4fb3;
   --indigo: #0f2a4a;
   --teal: #0e8a78;
   --teal-soft: #e3f5f2;
@@ -44,8 +44,8 @@
   --pill-on-bg: #15171c;
   --pill-on-fg: #ffffff;
   --eyebrow-icon: var(--violet);
-  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: light;
 }
 
@@ -417,7 +417,7 @@ button {
    update, a GST invoice) on the right. */
 .hero {
   padding: 72px 0 0;
-  background: linear-gradient(180deg, #e3f0fb 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #eaf0fc 0%, #ffffff 100%);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
 }
@@ -2657,7 +2657,7 @@ button {
 /* ── 404 and error pages ── */
 .error-page {
   padding: 96px 0 120px;
-  background: linear-gradient(180deg, #e3f0fb 0%, #ffffff 70%);
+  background: linear-gradient(180deg, #eaf0fc 0%, #ffffff 70%);
 }
 .error-page .wrap {
   max-width: 980px;
@@ -2972,3 +2972,27 @@ button {
     padding: 28px 20px;
   }
 }
+
+/* ── Real brands, launch → manage → grow, what you sell ── */
+.brands__title { margin: 0 0 18px; font: 600 15px/1.3 var(--font-display); color: var(--muted); text-align: center; }
+.brands { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.brand-card { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.brand-card b { font: 700 17px/1.3 var(--font-display); color: var(--text); }
+.brand-card span { font-size: 14px; color: var(--muted); }
+.brand-card__link, .brand-card__live { margin-top: auto; padding-top: 10px; font-size: 14px; font-weight: 600; }
+.brand-card__link { color: var(--violet); text-decoration: none; }
+.brand-card__link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.brand-card .brand-card__live { color: var(--teal); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: none; }
+.step { position: relative; padding: 26px 24px 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.step__n { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; margin-bottom: 14px; border-radius: 10px; background: var(--violet-soft); color: var(--violet-ink); font: 700 16px/1 var(--font-display); }
+.step p { margin: 8px 0 14px; color: var(--muted); }
+.step ul { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; font-size: 14.5px; }
+.step li { display: flex; align-items: center; gap: 8px; }
+.step li svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--violet); }
+.sells { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 28px; }
+.sells__label { font-weight: 600; color: var(--text); }
+.sells ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.sells li { padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 14px; color: var(--muted); }
+@media (max-width: 900px) { .brands { grid-template-columns: repeat(2, minmax(0, 1fr)); } .steps { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .brands { grid-template-columns: 1fr; } }
