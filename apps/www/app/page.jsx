@@ -86,17 +86,17 @@ export default async function HomePage() {
       <section className="hero">
         <div className="wrap hero__grid">
           <div className="hero__copy">
-            <h1 className="h1">The e-commerce platform for Indian brands.</h1>
+            <h1 className="h1">Your brand. Your store. Your growth.</h1>
             <p className="lead">
-              Launch your own store, run every order from one place and grow with WhatsApp, ads and AI — built for UPI, cash on delivery and GST from day one.
+              Build your online store, accept payments, manage orders and grow your business — all from one platform.
             </p>
             <div className="hero__ctas">
               <a href={`${APP_URL}/register`} className="btn btn--primary btn--lg">
-                Start free trial
+                Start your free trial
               </a>
               {DEMO_URL ? (
                 <a href={DEMO_URL} target="_blank" rel="noopener" className="btn btn--ghost btn--lg">
-                  See a live store
+                  Explore a demo store
                 </a>
               ) : (
                 <Link href="/pricing" className="btn btn--ghost btn--lg">

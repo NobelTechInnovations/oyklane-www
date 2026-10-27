@@ -6,16 +6,16 @@ import { Reveal } from "./components/Reveal";
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://oyklane.com"),
   title: {
-    default: "Oyklane — The e-commerce platform for Indian brands",
+    default: "Oyklane — Your brand. Your store. Your growth.",
     template: "%s · Oyklane",
   },
   description:
-    "Oyklane is the commerce platform for Indian brands: a store you design without code, One-Click Checkout, UPI and cash on delivery, GST invoices, automated customer emails and an app store — live in an afternoon.",
+    "Oyklane is the modern e-commerce platform made for Indian sellers who want to launch, manage and grow their own brands: a store you design without code, One-Click Checkout, UPI and cash on delivery, GST invoices, automated customer emails and an app store — live in an afternoon.",
   // Google Search Console's "HTML tag" ownership check (Google Cloud's
   // OAuth branding needs oyklane.com verified). Set the code on Vercel.
   ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }),
   openGraph: {
-    title: "Oyklane — The e-commerce platform for Indian brands",
+    title: "Oyklane — Your brand. Your store. Your growth.",
     description: "Launch, manage and grow your own brand — UPI, COD and GST built in.",
     images: ["/showcase/atelier.webp"],
     type: "website",
