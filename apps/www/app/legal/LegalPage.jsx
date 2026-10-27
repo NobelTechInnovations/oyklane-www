@@ -12,7 +12,7 @@ export const LEGAL = {
   address: process.env.NEXT_PUBLIC_LEGAL_ADDRESS || "",
   grievanceOfficer: process.env.NEXT_PUBLIC_GRIEVANCE_OFFICER || "",
   city: process.env.NEXT_PUBLIC_LEGAL_CITY || "",
-  updated: "4 October 2026",
+  updated: "27 October 2026",
 };
 
 /** A legal document: title, last-updated date, contents and sections. */

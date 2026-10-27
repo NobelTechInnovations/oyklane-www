@@ -65,7 +65,9 @@ const sections = [
           <li>
             <strong>Google</strong>: the account&apos;s email, name and profile picture; the Google Business Profile locations it manages and their reviews and
             rating (Google Reviews app); its Merchant Center accounts, the product data source we add and Google&apos;s processing reports (Google &amp; YouTube
-            app); and, if the seller uses it, its Google Analytics properties and web data streams (Google Analytics app).
+            app); if the seller uses it, its Google Analytics properties and web data streams, and its Tag Manager accounts and web containers (Google
+            Analytics app); and its Google Ads accounts with their campaigns, ad groups, ads and images, budgets, conversion actions, billing status, linked
+            Merchant Center accounts, search terms and performance reports (Google Ads app).
           </li>
           <li>
             <strong>Meta</strong>: the Facebook user&apos;s name and id; the Pages they manage and the Instagram business accounts linked to them (profile and
@@ -105,8 +107,10 @@ const sections = [
           </p>
         </div>
         <ul>
-          <li>We use Google data only to provide the features the seller turned on: showing their reviews on their store, listing their products in Merchant Center and reporting its status, and setting up Google Analytics on their store.</li>
-          <li>We don&apos;t sell it, don&apos;t use it for advertising, and don&apos;t use it to develop or train generalised AI or machine-learning models.</li>
+          <li>We use Google data only to provide the features the seller turned on: showing their reviews on their store, listing their products in Merchant Center and reporting its status, setting up Google Analytics and Tag Manager on their store, and creating, reporting on and managing their own Google Ads campaigns.</li>
+          <li>Tag Manager: we list the seller&apos;s web containers and, if they ask, create one for their store. We add only the container ID to their store and don&apos;t change the tags inside it.</li>
+          <li>Google Ads: we never create campaigns, change budgets or spend on a seller&apos;s behalf unless they ask for that in Oyklane, including automatic rules they switch on. New campaigns start paused. If a seller has no Google Ads account, we can create one for them under Oyklane&apos;s manager account and invite them as its admin.</li>
+          <li>We don&apos;t sell it, don&apos;t use it to show ads to anyone or target ads for anyone else, and don&apos;t use it to develop or train generalised AI or machine-learning models.</li>
           <li>Our staff don&apos;t read it, except with the seller&apos;s permission for support, for security, or where the law requires.</li>
           <li>Google&apos;s access tokens are stored encrypted. Disconnecting Google in Settings ▸ Connected accounts deletes them and revokes our access at Google; you can also remove Oyklane at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">myaccount.google.com/permissions</a>.</li>
         </ul>
