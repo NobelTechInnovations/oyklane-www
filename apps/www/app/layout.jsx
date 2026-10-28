@@ -3,6 +3,8 @@ import { SiteNav } from "./components/SiteNav";
 import { SiteFooter } from "./components/SiteFooter";
 import { Reveal } from "./components/Reveal";
 import { Analytics } from "./components/Analytics";
+import { UtmCapture } from "./components/UtmCapture";
+import { API_URL } from "./components/site";
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://oyklane.com"),
@@ -43,6 +45,7 @@ export default function RootLayout({ children }) {
         <SiteFooter />
         <Reveal />
         <Analytics />
+        <UtmCapture site="www" apiUrl={API_URL} />
       </body>
     </html>
   );

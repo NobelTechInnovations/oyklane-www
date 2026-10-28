@@ -7,6 +7,7 @@ export default function sitemap() {
     ["/pricing", 0.9, "weekly"],
     ["/apps", 0.8, "weekly"],
     ["/integrations", 0.8, "weekly"],
+    ["/developers", 0.6, "monthly"],
     ["/help", 0.6, "monthly"],
     ["/vs-shopify", 0.7, "monthly"],
     ["/book-a-call", 0.6, "monthly"],
