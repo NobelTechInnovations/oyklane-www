@@ -198,6 +198,11 @@ const sections = [
       <ul>
         <li><strong>Needed to work</strong>: your sign-in session, your cart, the Oyklane account sign-in described above, and security protections.</li>
         <li><strong>Preferences</strong>: for example light or dark mode on oyklane.com.</li>
+        <li>
+          <strong>Our own measurement</strong>: on oyklane.com and the seller admin we use Google Analytics and the Meta pixel to count visits and sign-ups and
+          see which setup steps sellers finish (such as adding a first product or connecting a payment gateway). They don&apos;t receive order, payment or
+          shopper details.
+        </li>
         <li><strong>The store&apos;s own tools</strong>: a store may add analytics or advertising tags (such as Google Analytics or the Meta pixel). Those are the store&apos;s choice and covered by its policy.</li>
       </ul>
     ),

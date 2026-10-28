@@ -21,8 +21,6 @@ const WORKS_WITH = [
   ["Meta", { brand: "meta" }],
   ["Google", { brand: "google" }],
   ["WhatsApp", { brand: "whatsapp" }],
-  ["Shiprocket", { word: "shiprocket" }],
-  ["Delhivery", { word: "delhivery" }],
 ];
 
 /** Why sellers pick Oyklane — the highlighted band. */
@@ -94,16 +92,17 @@ export default async function HomePage() {
               <a href={`${APP_URL}/register`} className="btn btn--primary btn--lg">
                 Start your free trial
               </a>
-              {DEMO_URL ? (
-                <a href={DEMO_URL} target="_blank" rel="noopener" className="btn btn--ghost btn--lg">
-                  Explore a demo store
-                </a>
-              ) : (
-                <Link href="/pricing" className="btn btn--ghost btn--lg">
-                  See pricing
-                </Link>
-              )}
+              <Link href="/book-a-call" className="btn btn--ghost btn--lg">
+                Book a free 15-min setup call
+              </Link>
             </div>
+            {DEMO_URL && (
+              <p style={{ margin: "14px 0 0" }}>
+                <a href={DEMO_URL} target="_blank" rel="noopener" className="link-arrow">
+                  Or explore a demo store
+                </a>
+              </p>
+            )}
             <ul className="proof">
               <li><Icon d={I.check} /> {pricing.trialDays}-day free trial, no card</li>
               <li><Icon d={I.check} /> No product limits</li>
@@ -144,7 +143,7 @@ export default async function HomePage() {
         </div>
 
         <div className="wrap works">
-          <p className="works__label">Works with the payment, shipping and marketing tools you already use</p>
+          <p className="works__label">Works with the payment and marketing tools you already use</p>
           <ul className="works__row">
             {WORKS_WITH.map(([name, logo]) => (
               <li key={name}>
@@ -503,8 +502,8 @@ export default async function HomePage() {
             <a href={`${APP_URL}/register`} className="btn btn--white btn--lg">
               Start free trial
             </a>
-            <Link href="/pricing" className="btn btn--outline-white btn--lg">
-              See pricing
+            <Link href="/book-a-call" className="btn btn--outline-white btn--lg">
+              Book a free 15-min setup call
             </Link>
           </div>
         </div>

@@ -29,6 +29,15 @@ const THEMES = [
     colors: ["#f3f3ef", "#0e0e0e", "#d7f75b", "#ffffff"],
   },
   {
+    key: "fresh",
+    name: "Fresh",
+    for: "Grocery, food & drinks",
+    text: "Category circles, deals of the day, offer tiles, product tiles with pack size, a veg / non-veg mark and a one-tap ADD button.",
+    url: "your-brand.oyklane.com",
+    colors: ["#ffffff", "#17251b", "#1f7a3a", "#f2f7ee"],
+    img: "jpg",
+  },
+  {
     key: "fizz",
     name: "Fizz",
     for: "Drinks, snacks & D2C",

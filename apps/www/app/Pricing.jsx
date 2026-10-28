@@ -30,7 +30,8 @@ export function Pricing({ data, appUrl }) {
       <div className="plans">
         {plans.map((p, i) => {
           const prev = plans[i - 1];
-          const extra = (prev ? p.features.filter((f) => !prev.features.some((x) => x.key === f.key)) : p.features).slice(0, 7);
+          // Everything the plan adds — the same list as the comparison table.
+          const extra = prev ? p.features.filter((f) => !prev.features.some((x) => x.key === f.key)) : p.features;
           const featured = p.key === "growth";
           const perMonth = yearly ? p.priceYearly / 12 : p.priceMonthly;
           return (
@@ -45,7 +46,11 @@ export function Pricing({ data, appUrl }) {
                   <strong>{inr(perMonth)}</strong>
                   <span className="muted">/month</span>
                 </p>
-                <p className="plan__sub">{yearly ? `${inr(p.priceYearly)} billed yearly · save ${inr(p.priceMonthly * 12 - p.priceYearly)}` : "Billed monthly · + GST"}</p>
+                <p className="plan__sub">
+                  {yearly
+                    ? `${inr(p.priceYearly)} billed yearly · save ${inr(p.priceMonthly * 12 - p.priceYearly)} · + GST`
+                    : `Billed monthly · + GST · or ${inr(p.priceYearly)} a year (${inr(p.priceYearly / 12)}/month)`}
+                </p>
               </div>
               <ul>
                 {prev && (
@@ -54,7 +59,7 @@ export function Pricing({ data, appUrl }) {
                   </li>
                 )}
                 {extra.map((f) => (
-                  <li key={f.key}>
+                  <li key={f.key} title={f.note || undefined}>
                     <Tick /> {f.name}
                   </li>
                 ))}
@@ -63,6 +68,9 @@ export function Pricing({ data, appUrl }) {
                 </li>
                 <li>
                   <Tick /> {p.commissionPercent}% fee per paid order
+                </li>
+                <li className="plan__optional">
+                  <Tick /> One-Click Checkout: +{data.oneClickFeePercent}% per order (optional)
                 </li>
               </ul>
               <a href={`${appUrl}/register`} className={`btn ${featured ? "btn--primary" : "btn--ghost"}`}>
@@ -73,8 +81,8 @@ export function Pricing({ data, appUrl }) {
         })}
       </div>
       <p className="plans__note">
-        {data.trialDays}-day free trial{data.introEnabled ? `, then ${inr(data.introPrice)} for your first month` : ""} on any plan. Prices exclude 18% GST. The
-        One-Click Checkout app adds 0.3% to the per-order fee.
+        {data.trialDays}-day free trial{data.introEnabled ? `, then ${inr(data.introPrice)} for your first month` : ""} on any plan. Prices exclude 18% GST.
+        One-Click Checkout is an optional app: it adds {data.oneClickFeePercent}% to the fee on orders paid through it.
       </p>
     </>
   );

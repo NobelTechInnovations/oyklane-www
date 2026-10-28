@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { WHATSAPP } from "../components/site";
 
 /**
  * Who Oyklane is, for the legal pages. Set on Vercel (www project) when
@@ -6,17 +7,19 @@ import Link from "next/link";
  * required to be published under India's IT Rules and the DPDP Act.
  */
 export const LEGAL = {
-  name: process.env.NEXT_PUBLIC_LEGAL_NAME || "Oyklane",
+  name: process.env.NEXT_PUBLIC_LEGAL_NAME || "Upsway",
   email: process.env.NEXT_PUBLIC_LEGAL_EMAIL || "support@oyklane.com",
   privacyEmail: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || process.env.NEXT_PUBLIC_LEGAL_EMAIL || "support@oyklane.com",
-  address: process.env.NEXT_PUBLIC_LEGAL_ADDRESS || "",
+  address: process.env.NEXT_PUBLIC_LEGAL_ADDRESS || "Mansarovar, Jaipur, Rajasthan 302020, India",
+  gstin: process.env.NEXT_PUBLIC_LEGAL_GSTIN || "08GFBPP1123R1Z2",
   grievanceOfficer: process.env.NEXT_PUBLIC_GRIEVANCE_OFFICER || "",
-  city: process.env.NEXT_PUBLIC_LEGAL_CITY || "",
-  updated: "27 October 2026",
+  city: process.env.NEXT_PUBLIC_LEGAL_CITY || "Jaipur",
+  updated: "28 October 2026",
 };
 
-/** A legal document: title, last-updated date, contents and sections. */
-export function LegalPage({ eyebrow, title, intro, sections }) {
+/** A legal document: title, last-updated date, contents and sections.
+ * Also used for About and Help (`updated={null}` hides the date). */
+export function LegalPage({ eyebrow, title, intro, sections, updated = LEGAL.updated }) {
   return (
     <>
       <section className="wrap page-hero" style={{ paddingBottom: 0 }}>
@@ -26,7 +29,7 @@ export function LegalPage({ eyebrow, title, intro, sections }) {
             {title}
           </h1>
           {intro && <p className="lead" style={{ marginTop: 18, maxWidth: "62ch" }}>{intro}</p>}
-          <p className="legal__meta">Last updated {LEGAL.updated}</p>
+          {updated && <p className="legal__meta">Last updated {updated}</p>}
         </div>
       </section>
       <div className="wrap legal">
@@ -68,8 +71,14 @@ export function ContactBlock() {
             {LEGAL.address}
           </>
         ) : null}
+        {LEGAL.gstin ? (
+          <>
+            <br />
+            GSTIN: {LEGAL.gstin}
+          </>
+        ) : null}
         <br />
-        Email: <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>
+        Email: <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a> · WhatsApp: <a href={WHATSAPP.url}>{WHATSAPP.display}</a>
       </p>
       <p>
         <strong>Grievance Officer</strong> (Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023):{" "}

@@ -2,6 +2,7 @@ import "./globals.css";
 import { SiteNav } from "./components/SiteNav";
 import { SiteFooter } from "./components/SiteFooter";
 import { Reveal } from "./components/Reveal";
+import { Analytics } from "./components/Analytics";
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://oyklane.com"),
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
         <main id="main">{children}</main>
         <SiteFooter />
         <Reveal />
+        <Analytics />
       </body>
     </html>
   );

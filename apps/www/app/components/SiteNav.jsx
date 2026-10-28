@@ -110,6 +110,7 @@ export function SiteNav() {
         <Link href="/apps">Apps</Link>
         <Link href="/pricing">Pricing</Link>
         <Link href="/developers">Developers</Link>
+        <Link href="/book-a-call">Book a free setup call</Link>
         <a href={`${APP_URL}/login`}>Log in</a>
         <a href={`${APP_URL}/register`} className="btn btn--primary btn--lg">
           Start your free trial
