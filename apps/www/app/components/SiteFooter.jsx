@@ -51,6 +51,7 @@ export function SiteFooter() {
               <li><Link href="/apps">Apps</Link></li>
               <li><a href={MARKET_URL}>Oyklane Store</a></li>
               <li><Link href="/pricing">Pricing</Link></li>
+              <li><Link href="/vs-shopify">Oyklane vs Shopify</Link></li>
               <li><Link href="/developers">API docs</Link></li>
             </ul>
           </div>

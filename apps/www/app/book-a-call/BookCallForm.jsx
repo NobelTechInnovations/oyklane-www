@@ -34,15 +34,31 @@ export function BookCallForm({ whatsapp }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [done, setDone] = useState(null);
+  // Slots someone already booked ("2026-10-29T11:30") — shown but not clickable.
+  const [taken, setTaken] = useState(() => new Set());
+
+  async function loadTaken() {
+    try {
+      const res = await fetch("/api/book-call", { cache: "no-store" });
+      const data = await res.json();
+      const next = new Set(Array.isArray(data.taken) ? data.taken : []);
+      setTaken(next);
+      return next;
+    } catch {
+      return new Set();
+    }
+  }
 
   // Worked out in the browser, so the days match the visitor's "now".
   useEffect(() => {
     const list = upcomingDays();
     setDays(list);
-    setDay(list[0]?.iso || null);
+    loadTaken().then((t) => setDay((list.find((d) => d.slots.some((s) => !t.has(`${d.iso}T${s}`))) || list[0])?.iso || null));
   }, []);
 
   const current = days?.find((d) => d.iso === day);
+  const isTaken = (iso, t) => taken.has(`${iso}T${t}`);
+  const dayFull = (d) => d.slots.every((t) => isTaken(d.iso, t));
 
   async function submit(e) {
     e.preventDefault();
@@ -65,6 +81,11 @@ export function BookCallForm({ whatsapp }) {
         }),
       });
       const data = await res.json().catch(() => ({}));
+      if (res.status === 409) {
+        // Someone took this time a moment ago: show the latest free times.
+        await loadTaken();
+        setTime(null);
+      }
       if (!res.ok) throw new Error(data.error || "Couldn't send your request.");
       setDone(data.when || `${current?.label}, ${timeLabel(time)}`);
     } catch (err) {
@@ -77,7 +98,7 @@ export function BookCallForm({ whatsapp }) {
   if (done) {
     return (
       <div className="book book--done" role="status">
-        <h2 className="h3">Request sent for {done}</h2>
+        <h2 className="h3">Booked for {done}</h2>
         <p className="muted">
           We&apos;ll confirm the time on WhatsApp shortly. Need to change it? Message us at <a href={whatsapp.url}>{whatsapp.display}</a>.
         </p>
@@ -92,7 +113,7 @@ export function BookCallForm({ whatsapp }) {
         <div className="book__chips">
           {days === null && <span className="muted">Loading days…</span>}
           {days?.map((d) => (
-            <button key={d.iso} type="button" className="book__chip" aria-pressed={day === d.iso} onClick={() => (setDay(d.iso), setTime(null))}>
+            <button key={d.iso} type="button" className="book__chip" aria-pressed={day === d.iso} disabled={dayFull(d)} title={dayFull(d) ? "Fully booked" : undefined} onClick={() => (setDay(d.iso), setTime(null))}>
               {d.label}
             </button>
           ))}
@@ -103,7 +124,7 @@ export function BookCallForm({ whatsapp }) {
           <legend>Pick a time (India time)</legend>
           <div className="book__chips">
             {current.slots.map((t) => (
-              <button key={t} type="button" className="book__chip" aria-pressed={time === t} onClick={() => setTime(t)}>
+              <button key={t} type="button" className="book__chip" aria-pressed={time === t} disabled={isTaken(current.iso, t)} title={isTaken(current.iso, t) ? "Already booked" : undefined} onClick={() => setTime(t)}>
                 {timeLabel(t)}
               </button>
             ))}
