@@ -11,7 +11,8 @@ export const metadata = {
 
 export default async function HelpPage() {
   const pricing = await getPlans();
-  const waPrice = `₹${Number(pricing.whatsappMessagePrice).toFixed(2)}`;
+  const wa = pricing.whatsappMessagePrices;
+  const waPrice = wa ? `₹${Number(wa.utility).toFixed(2)} (updates) to ₹${Number(wa.marketing).toFixed(2)} (offers)` : `₹${Number(pricing.whatsappMessagePrice).toFixed(2)}`;
   const groups = [
     {
       title: "Getting started",

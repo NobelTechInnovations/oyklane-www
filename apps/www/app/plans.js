@@ -52,6 +52,7 @@ export async function getPlans() {
       annualDiscountPercent: Math.max(0, ...data.plans.map(yearlyOff)),
       oneClickFeePercent: data.oneClickFeePercent ?? FALLBACK.oneClickFeePercent,
       whatsappMessagePrice: data.whatsappMessagePrice ?? FALLBACK.whatsappMessagePrice,
+      whatsappMessagePrices: data.whatsappMessagePrices || null,
       plans: data.plans.map(present),
     };
   } catch {

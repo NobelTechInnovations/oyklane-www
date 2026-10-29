@@ -16,7 +16,8 @@ export default async function PricingPage() {
   const seen = new Map();
   for (const p of plans) for (const f of p.features || []) if (!seen.has(f.key)) seen.set(f.key, f);
   const rows = [...seen.values()];
-  const waPrice = `₹${Number(pricing.whatsappMessagePrice).toFixed(2)}`;
+  const wa = pricing.whatsappMessagePrices;
+  const waPrice = wa ? `₹${Number(wa.utility).toFixed(2)} (updates) to ₹${Number(wa.marketing).toFixed(2)} (offers)` : `₹${Number(pricing.whatsappMessagePrice).toFixed(2)}`;
 
   const faq = [
     ["Is there a free trial?", `Yes — ${pricing.trialDays} days on any plan${pricing.introEnabled ? `, then ${inr(pricing.introPrice)} for your first month` : ""}. You choose autopay (UPI or card) to carry on; nothing is charged during the trial.`],
