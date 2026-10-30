@@ -9,9 +9,9 @@ const FALLBACK = {
   oneClickFeePercent: 0.3,
   whatsappMessagePrice: 0.5,
   plans: [
-    { key: "starter", name: "Starter", tagline: "Everything to open your store.", priceMonthly: 599, priceYearly: 5750.4, commissionPercent: 2, staffLimit: 2, features: [] },
-    { key: "growth", name: "Growth", tagline: "Marketing, reports and GST invoices for a growing brand.", priceMonthly: 1199, priceYearly: 11510.4, commissionPercent: 1.5, staffLimit: 10, features: [] },
-    { key: "pro", name: "Pro", tagline: "The lowest fees, API access and priority support.", priceMonthly: 1999, priceYearly: 19190.4, commissionPercent: 0.5, staffLimit: 30, features: [] },
+    { key: "starter", name: "Starter", tagline: "Everything to open your store.", priceMonthly: 899, priceYearly: 8630.4, commissionPercent: 2, staffLimit: 2, features: [] },
+    { key: "growth", name: "Growth", tagline: "Marketing, reports and GST invoices for a growing brand.", priceMonthly: 1999, priceYearly: 19190.4, commissionPercent: 1.5, staffLimit: 10, features: [] },
+    { key: "pro", name: "Pro", tagline: "The lowest fees, API access and priority support.", priceMonthly: 4999, priceYearly: 47990.4, commissionPercent: 0.5, staffLimit: 30, features: [] },
   ],
 };
 

@@ -77,7 +77,7 @@ export function Calculator({ oyklane, shopify, oneClickFeePercent }) {
             ? "About the same on both."
             : diff > 0
               ? `Oyklane costs ${inr(diff)} less a month (${inr(diff * 12)} a year).`
-              : `Shopify costs ${inr(-diff)} less a month at these numbers — mostly cash-on-delivery stores, where Shopify adds no fee.`}
+              : "Oyklane comes with cash on delivery, UPI, WhatsApp order updates, abandoned-checkout reminders and shipping built in — no extra apps to find and pay for."}
         </p>
       </div>
 

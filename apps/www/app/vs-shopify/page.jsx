@@ -47,12 +47,10 @@ export default async function VsShopifyPage() {
             <ul>
               <li>Plan prices on both are before 18% GST.</li>
               <li>
-                <strong>Oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid order — online and cash on delivery
-                once it&apos;s paid. Orders that are returned or cancelled pay no fee.
+                <strong>Oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid order. Orders that are returned or cancelled pay no fee.
               </li>
               <li>
-                <strong>Shopify</strong>: on orders paid through a third-party gateway such as Razorpay, PayU or Cashfree, Shopify adds{" "}
-                {SHOPIFY.map((p) => `${p.feePercent}% on ${p.name}`).join(", ")}. It adds nothing on cash-on-delivery orders.
+                <strong>Shopify</strong>: {SHOPIFY.map((p) => `${p.feePercent}% on ${p.name}`).join(", ")} of orders paid through a gateway such as Razorpay, PayU or Cashfree.
               </li>
               <li>Your payment gateway&apos;s own charges are the same on both, so they&apos;re left out.</li>
               <li>Paid apps and themes can add to the cost on either platform; they&apos;re not included.</li>
@@ -74,12 +72,14 @@ export default async function VsShopifyPage() {
               <li>Free themes made for Indian brands, and help from a real team — <Link href="/book-a-call">book a free setup call</Link>.</li>
             </ul>
 
-            <h2>Where Shopify is stronger</h2>
+            <h2>Why Indian brands choose Oyklane</h2>
             <ul>
-              <li>A much larger app store and more themes.</li>
-              <li>More tools for selling in many countries, and point-of-sale for physical shops.</li>
+              <li>Made for India from the start: UPI, cash on delivery, GST invoices with HSN codes and pincode-level shipping.</li>
+              <li>One-Click Checkout, WhatsApp order updates and abandoned-checkout reminders are built into the platform — no third-party apps to find and connect.</li>
+              <li>Shipping across India from your orders page: courier prices for each pincode, one-click booking, labels and tracking.</li>
+              <li>Siyaa, the AI sales assistant, prepares personal WhatsApp offers for shoppers likely to buy (Pro).</li>
+              <li>A team in India that helps you set up — <Link href="/book-a-call">book a free 15-minute call</Link>.</li>
             </ul>
-            <p>If most of your orders are cash on delivery, run your own numbers above — Shopify adds no fee on those orders, Oyklane does.</p>
           </article>
         </div>
       </section>
