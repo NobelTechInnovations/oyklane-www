@@ -2558,12 +2558,12 @@ button {
   .mobile-menu[data-open="true"] {
     display: block;
     position: fixed;
-    inset: 66px 0 0;
+    inset: 70px 0 0;
     z-index: 49;
     overflow-y: auto;
-    padding: 12px 20px 40px;
-    background: var(--menu-bg);
-    backdrop-filter: blur(10px);
+    overscroll-behavior: contain;
+    padding: 12px 20px calc(40px + env(safe-area-inset-bottom));
+    background: var(--bg, #fff);
   }
   .mobile-menu a {
     display: block;

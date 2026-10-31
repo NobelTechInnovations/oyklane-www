@@ -68,6 +68,7 @@ export function Pricing({ data, appUrl }) {
                 </li>
                 <li>
                   <Tick /> {p.commissionPercent}% fee per paid order
+                  {data.codFeeDiscountPercent > 0 && <span className="muted"> · {Math.max(0, p.commissionPercent - data.codFeeDiscountPercent)}% on cash on delivery</span>}
                 </li>
                 <li className="plan__optional">
                   <Tick /> One-Click Checkout: +{data.oneClickFeePercent}% per order (optional)

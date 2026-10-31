@@ -33,6 +33,7 @@ export function SiteNav() {
   const cur = (href) => (pathname === href ? "page" : undefined);
 
   return (
+    <>
     <header className="nav">
       <a href="#main" className="skip">
         Skip to content
@@ -100,6 +101,9 @@ export function SiteNav() {
           <Icon d={open ? I.x : I.menu} />
         </button>
       </div>
+    </header>
+    {/* Outside the header: its blur effect would trap a fixed panel inside
+        the header's own height (the menu showed one item and a strip). */}
       <div id="mobile-menu" className="mobile-menu" data-open={open}>
         {FEATURES.map((f) => (
           <Link key={f.title} href={f.href} onClick={() => setOpen(false)}>
@@ -116,6 +120,6 @@ export function SiteNav() {
           Start your free trial
         </a>
       </div>
-    </header>
+    </>
   );
 }

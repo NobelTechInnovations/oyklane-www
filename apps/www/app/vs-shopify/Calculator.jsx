@@ -9,9 +9,9 @@ const SALES_STEPS = [50000, 100000, 200000, 300000, 500000, 1000000, 2000000, 50
  * Monthly cost on each platform for the visitor's sales: plan price + the
  * platform's own fee on orders. Payment-gateway charges (Razorpay, PayU…)
  * are the same on both and left out. Oyklane's fee is on every paid order,
- * cash on delivery included; Shopify's is on online payments only.
+ * lower on cash on delivery; Shopify's is on online payments only.
  */
-export function Calculator({ oyklane, shopify, oneClickFeePercent }) {
+export function Calculator({ oyklane, shopify, oneClickFeePercent, codFeeDiscountPercent = 0.5 }) {
   const [sales, setSales] = useState(200000);
   const [onlinePct, setOnlinePct] = useState(60);
   const [yearly, setYearly] = useState(false);
@@ -21,7 +21,8 @@ export function Calculator({ oyklane, shopify, oneClickFeePercent }) {
     const online = (sales * onlinePct) / 100;
     const o = oyklane.map((p) => {
       const plan = yearly ? p.priceYearly / 12 : p.priceMonthly;
-      const fee = (sales * p.commissionPercent) / 100 + (oneClick ? (online * oneClickFeePercent) / 100 : 0);
+      const codRate = Math.max(0, p.commissionPercent - codFeeDiscountPercent);
+      const fee = (online * p.commissionPercent) / 100 + ((sales - online) * codRate) / 100 + (oneClick ? (online * oneClickFeePercent) / 100 : 0);
       return { name: `Oyklane ${p.name}`, plan, fee, total: plan + fee, ours: true };
     });
     const s = shopify.map((p) => {
@@ -30,7 +31,7 @@ export function Calculator({ oyklane, shopify, oneClickFeePercent }) {
       return { name: `Shopify ${p.name}`, plan, fee, total: plan + fee };
     });
     return { o, s, bestO: o.reduce((a, b) => (b.total < a.total ? b : a)), bestS: s.reduce((a, b) => (b.total < a.total ? b : a)) };
-  }, [sales, onlinePct, yearly, oneClick, oyklane, shopify, oneClickFeePercent]);
+  }, [sales, onlinePct, yearly, oneClick, oyklane, shopify, oneClickFeePercent, codFeeDiscountPercent]);
 
   const diff = rows.bestS.total - rows.bestO.total;
   const salesIndex = Math.max(0, SALES_STEPS.findIndex((v) => v >= sales));

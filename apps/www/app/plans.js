@@ -7,6 +7,7 @@ const FALLBACK = {
   introPrice: 49,
   annualDiscountPercent: 20,
   oneClickFeePercent: 0.3,
+  codFeeDiscountPercent: 0.5,
   whatsappMessagePrice: 0.5,
   plans: [
     { key: "starter", name: "Starter", tagline: "Everything to open your store.", priceMonthly: 899, priceYearly: 8630.4, commissionPercent: 2, staffLimit: 2, features: [] },
@@ -51,6 +52,7 @@ export async function getPlans() {
       introPrice: data.introPrice ?? FALLBACK.introPrice,
       annualDiscountPercent: Math.max(0, ...data.plans.map(yearlyOff)),
       oneClickFeePercent: data.oneClickFeePercent ?? FALLBACK.oneClickFeePercent,
+      codFeeDiscountPercent: data.codFeeDiscountPercent ?? FALLBACK.codFeeDiscountPercent,
       whatsappMessagePrice: data.whatsappMessagePrice ?? FALLBACK.whatsappMessagePrice,
       whatsappMessagePrices: data.whatsappMessagePrices || null,
       plans: data.plans.map(present),

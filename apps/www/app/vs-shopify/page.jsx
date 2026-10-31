@@ -37,7 +37,7 @@ export default async function VsShopifyPage() {
       </section>
 
       <section className="wrap" style={{ paddingBottom: 60 }}>
-        <Calculator oyklane={oyklane} shopify={SHOPIFY} oneClickFeePercent={pricing.oneClickFeePercent} />
+        <Calculator oyklane={oyklane} shopify={SHOPIFY} oneClickFeePercent={pricing.oneClickFeePercent} codFeeDiscountPercent={pricing.codFeeDiscountPercent} />
       </section>
 
       <section className="section section--tight">
@@ -47,7 +47,7 @@ export default async function VsShopifyPage() {
             <ul>
               <li>Plan prices on both are before 18% GST.</li>
               <li>
-                <strong>Oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid order. Orders that are returned or cancelled pay no fee.
+                <strong>Oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid order, and {pricing.codFeeDiscountPercent}% less on cash-on-delivery orders. Orders that are returned or cancelled pay no fee.
               </li>
               <li>
                 <strong>Shopify</strong>: {SHOPIFY.map((p) => `${p.feePercent}% on ${p.name}`).join(", ")} of orders paid through a gateway such as Razorpay, PayU or Cashfree.
