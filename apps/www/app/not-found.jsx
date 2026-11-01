@@ -5,7 +5,7 @@ import { APP_URL } from "./components/site";
 export const metadata = { title: "Page not found" };
 
 const PLACES = [
-  { href: "/", icon: I.home, title: "Home", text: "What Oyklane does, in five minutes." },
+  { href: "/", icon: I.home, title: "Home", text: "What oyklane does, in five minutes." },
   { href: "/pricing", icon: I.tag, title: "Pricing", text: "Plans in ₹, with a free trial." },
   { href: "/apps", icon: I.grid, title: "Apps", text: "Phone Login, reviews, Flow and more." },
   { href: "/integrations", icon: I.puzzle, title: "Integrations", text: "Payments, couriers, ads and WhatsApp." },

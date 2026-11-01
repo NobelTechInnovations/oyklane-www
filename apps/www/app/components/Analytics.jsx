@@ -3,7 +3,7 @@ import Script from "next/script";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
 
-/** GA4 and the Meta pixel for Oyklane's own funnel (page views here; the
+/** GA4 and the Meta pixel for oyklane's own funnel (page views here; the
  * sign-up and setup events are sent from the admin) — only when their IDs
  * are set on Vercel. */
 export function Analytics() {

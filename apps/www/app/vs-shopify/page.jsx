@@ -5,8 +5,8 @@ import { APP_URL } from "../components/site";
 import { Calculator } from "./Calculator";
 
 export const metadata = {
-  title: "Oyklane vs Shopify",
-  description: "Compare what an Indian brand pays each month on Oyklane and Shopify — plan prices and platform fees on orders, with a calculator for your own sales.",
+  title: "oyklane vs Shopify",
+  description: "Compare what an Indian brand pays each month on oyklane and Shopify — plan prices and platform fees on orders, with a calculator for your own sales.",
   alternates: { canonical: "/vs-shopify" },
 };
 
@@ -29,7 +29,7 @@ export default async function VsShopifyPage() {
         <div>
           <span className="eyebrow eyebrow--center">
             <span className="eyebrow__icon"><Icon d={I.tag} /></span>
-            Oyklane vs Shopify
+            oyklane vs Shopify
           </span>
           <h1 className="h1">What will you pay each month?</h1>
           <p className="lead">Move the sliders to your sales. We add up each platform&apos;s plan price and its own fee on your orders.</p>
@@ -37,7 +37,7 @@ export default async function VsShopifyPage() {
       </section>
 
       <section className="wrap" style={{ paddingBottom: 60 }}>
-        <Calculator oyklane={oyklane} shopify={SHOPIFY} oneClickFeePercent={pricing.oneClickFeePercent} codFeeDiscountPercent={pricing.codFeeDiscountPercent} />
+        <Calculator oyklane={oyklane} shopify={SHOPIFY} oneClickFeePercent={pricing.oneClickFeePercent} codCommissionPercent={pricing.codCommissionPercent} />
       </section>
 
       <section className="section section--tight">
@@ -47,7 +47,7 @@ export default async function VsShopifyPage() {
             <ul>
               <li>Plan prices on both are before 18% GST.</li>
               <li>
-                <strong>Oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid order, and {pricing.codFeeDiscountPercent}% less on cash-on-delivery orders. Orders that are returned or cancelled pay no fee.
+                <strong>oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid online order, and {pricing.codCommissionPercent}% on cash-on-delivery orders. Orders that are returned or cancelled pay no fee.
               </li>
               <li>
                 <strong>Shopify</strong>: {SHOPIFY.map((p) => `${p.feePercent}% on ${p.name}`).join(", ")} of orders paid through a gateway such as Razorpay, PayU or Cashfree.
@@ -59,11 +59,11 @@ export default async function VsShopifyPage() {
                 <a href="https://www.shopify.com/in/pricing" target="_blank" rel="noopener noreferrer">
                   shopify.com/in/pricing
                 </a>{" "}
-                on {CHECKED}. Oyklane prices are today&apos;s, from our <Link href="/pricing">pricing page</Link>.
+                on {CHECKED}. oyklane prices are today&apos;s, from our <Link href="/pricing">pricing page</Link>.
               </li>
             </ul>
 
-            <h2>Built in on Oyklane</h2>
+            <h2>Built in on oyklane</h2>
             <ul>
               <li>Payments straight to your own Razorpay, Cashfree, PayU, Stripe or PayPal account, plus cash on delivery.</li>
               <li>GST invoices with HSN codes and your buyer&apos;s GSTIN (Growth and Pro).</li>
@@ -72,7 +72,7 @@ export default async function VsShopifyPage() {
               <li>Free themes made for Indian brands, and help from a real team — <Link href="/book-a-call">book a free setup call</Link>.</li>
             </ul>
 
-            <h2>Why Indian brands choose Oyklane</h2>
+            <h2>Why Indian brands choose oyklane</h2>
             <ul>
               <li>Made for India from the start: UPI, cash on delivery, GST invoices with HSN codes and pincode-level shipping.</li>
               <li>One-Click Checkout, WhatsApp order updates and abandoned-checkout reminders are built into the platform — no third-party apps to find and connect.</li>
@@ -87,7 +87,7 @@ export default async function VsShopifyPage() {
       <section className="band band--violet">
         <div className="wrap cta">
           <div>
-            <h2 className="h2">Try Oyklane free for {pricing.trialDays} days.</h2>
+            <h2 className="h2">Try oyklane free for {pricing.trialDays} days.</h2>
             <p className="lead">Set up your store, connect your gateway and see it for yourself.</p>
           </div>
           <div className="hero__ctas">

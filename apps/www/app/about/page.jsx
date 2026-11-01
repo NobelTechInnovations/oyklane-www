@@ -4,7 +4,7 @@ import { SOCIAL, WHATSAPP } from "../components/site";
 
 export const metadata = {
   title: "About us",
-  description: `Oyklane is an e-commerce platform for Indian brands, run by ${LEGAL.name}, Jaipur. Company details, GSTIN and how to reach us.`,
+  description: `oyklane is an e-commerce platform for Indian brands, run by ${LEGAL.name}, Jaipur. Company details, GSTIN and how to reach us.`,
   alternates: { canonical: "/about" },
 };
 
@@ -15,8 +15,8 @@ const sections = [
     body: (
       <>
         <p>
-          Oyklane helps Indian brands sell online from their own store — with checkout, payments to the seller&apos;s own gateway, GST invoices, WhatsApp
-          updates and ads in one admin. Oyklane is a product of <strong>{LEGAL.name}</strong>, based in {LEGAL.city}.
+          oyklane helps Indian brands sell online from their own store — with checkout, payments to the seller&apos;s own gateway, GST invoices, WhatsApp
+          updates and ads in one admin. oyklane is a product of <strong>{LEGAL.name}</strong>, based in {LEGAL.city}.
         </p>
         <p>
           See what&apos;s included on <Link href="/pricing">Pricing</Link>, or try it with a free trial.
@@ -33,7 +33,7 @@ const sections = [
           <strong>Legal name</strong>: {LEGAL.name}
         </li>
         <li>
-          <strong>Brand</strong>: Oyklane
+          <strong>Brand</strong>: oyklane
         </li>
         <li>
           <strong>Registered address</strong>: {LEGAL.address}
@@ -75,5 +75,5 @@ const sections = [
 ];
 
 export default function AboutPage() {
-  return <LegalPage eyebrow="About us" title="About Oyklane" intro="Your own online store, made for selling in India." sections={sections} updated={null} />;
+  return <LegalPage eyebrow="About us" title="About oyklane" intro="Your own online store, made for selling in India." sections={sections} updated={null} />;
 }

@@ -39,7 +39,7 @@ export function SiteNav() {
         Skip to content
       </a>
       <div className="wrap nav__inner">
-        <Link href="/" className="logo" aria-label="Oyklane home">
+        <Link href="/" className="logo" aria-label="oyklane home">
           <OyklaneLogo height={30} />
         </Link>
         <nav aria-label="Main">

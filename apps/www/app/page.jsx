@@ -9,6 +9,15 @@ import { HeroShowcase } from "./components/HeroShowcase";
 import { EditorMock, CheckoutMock, FlowMock, HelpMock } from "./components/mocks";
 import { INTEGRATIONS } from "./data/integrations";
 import { Logo, Mark } from "./components/Logo";
+import { WordRotator } from "./components/WordRotator";
+import { OyklaneTile } from "./components/OyklaneLogo";
+import { ReviewDeck } from "./components/ReviewDeck";
+import { getSite, SITE_URL } from "./site-data";
+
+export const metadata = { alternates: { canonical: "/" } };
+
+// One headline, four promises (the hero types them in turn).
+const PROMISES = ["premium themes.", "lower fees.", "one-click checkout.", "shipping built in."];
 
 const WORKS_WITH = [
   ["Razorpay", { brand: "razorpay" }],
@@ -23,13 +32,13 @@ const WORKS_WITH = [
   ["WhatsApp", { brand: "whatsapp" }],
 ];
 
-/** Why sellers pick Oyklane — the highlighted band. */
+/** Why sellers pick oyklane — the highlighted band. */
 const STRENGTHS = [
   { icon: I.cod, title: "Made for India", text: "UPI, cards, net banking and cash on delivery. GST invoices with HSN codes and your buyer's GSTIN." },
   { icon: I.bolt, title: "Checkout in seconds", text: "One-Click Checkout: mobile number, a code, a saved address, pay — without leaving the page." },
   { icon: I.chat, title: "WhatsApp and SMS built in", text: "Order updates, an inbox for replies and sign-in codes — from your number or ours." },
   { icon: I.megaphone, title: "Ads from your dashboard", text: "Run Meta and Google campaigns, see results in plain words and approve suggestions." },
-  { icon: I.wallet, title: "Your money, directly", text: "Payments land in your own gateway account. Oyklane never holds your money." },
+  { icon: I.wallet, title: "Your money, directly", text: "Payments land in your own gateway account. oyklane never holds your money." },
   { icon: I.layers, title: "No code needed", text: "Eight free themes, a drag-and-drop editor, your own domain with SSL — set up in an afternoon." },
   { icon: I.life, title: "Help in your language", text: "Ask in English or Hinglish. An assistant that knows your store, and real people behind it." },
   { icon: I.tag, title: "Simple pricing", text: "Monthly plans in ₹, no product limits, no setup fee. Pay-as-you-go extras like ₹0.50 per SMS." },
@@ -44,18 +53,18 @@ const GROW = [
 
 const faq = (pricing) => [
   ["Do I need to know how to code?", "No. Pick a theme, change its colours, fonts, photos and sections in the editor, and arrange your product page by dragging blocks. The code editor is there if you ever want it."],
-  ["How do I get paid?", "Straight into your own account. Connect Razorpay, Cashfree, PayU, Stripe or PayPal (test mode first, if you like) and switch cash on delivery on or off. Oyklane never holds your money."],
+  ["How do I get paid?", "Straight into your own account. Connect Razorpay, Cashfree, PayU, Stripe or PayPal (test mode first, if you like) and switch cash on delivery on or off. oyklane never holds your money."],
   ["What is One-Click Checkout?", "An app that turns checkout into a popup: the shopper types their mobile number, confirms a one-time code, picks a saved address and pays with any method your gateway offers — without leaving the page they were on."],
-  ["Can I message customers on WhatsApp?", "Yes. Order confirmed, shipped and delivered messages go out automatically from Oyklane's number with your store's name — or connect your own WhatsApp Business number for your own templates, inbox and broadcasts."],
+  ["Can I message customers on WhatsApp?", "Yes. Order confirmed, shipped and delivered messages go out automatically from oyklane's number with your store's name — or connect your own WhatsApp Business number for your own templates, inbox and broadcasts."],
   [
     "What does it cost?",
     `${pricing.plans.map((p, i) => `${i === 0 ? "" : i === pricing.plans.length - 1 ? " and " : ", "}${p.name} ${inr(p.priceMonthly)}`).join("")} a month (plus 18% GST), with a small fee per paid order. Every store starts with a ${pricing.trialDays}-day free trial${pricing.introEnabled ? `, then ${inr(pricing.introPrice)} for the first month` : ""}.`,
   ],
-  ["What is the Oyklane Store?", "Our marketplace of themes and apps made by Oyklane and independent developers. Install one on your store in a click; paid ones are billed with your plan."],
+  ["What is the Oyklane Store?", "Our marketplace of themes and apps made by oyklane and independent developers. Install one on your store in a click; paid ones are billed with your plan."],
   ["Can I use my own domain?", "Yes. Every store gets a free yourname.oyklane.com address. Point your own domain at it from Settings ▸ Domains — SSL is set up for you."],
 ];
 
-// Real brands selling on Oyklane today — product proof, not stock photos.
+// Real brands selling on oyklane today — product proof, not stock photos.
 // Only what their own stores say they sell.
 const BRANDS = [
   { name: "The Laxmira Studio", what: "Designer clothing, for sale and for rent", url: "https://laxmira.net" },
@@ -66,17 +75,18 @@ const BRANDS = [
 
 // Launch → manage → grow: the order a seller actually goes in.
 const STEPS = [
-  { title: "Launch", text: "Pick a theme, add products, connect your domain and switch on UPI, cards and cash on delivery. Live the same day.", points: ["Free themes, edited without code", "Your own domain and logo", "UPI, cards, wallets and COD"] },
-  { title: "Manage", text: "Every order, shipment, invoice and customer in one place — built for how Indian orders actually work.", points: ["GST invoices, made for you", "Shipping with COD payouts", "Inventory, rentals and returns"] },
-  { title: "Grow", text: "Bring shoppers back and turn browsers into buyers with WhatsApp, ads and an AI sales assistant.", points: ["WhatsApp updates and offers", "Meta and Google ads", "Siyaa AI: personal deals that convert"] },
+  { icon: "rocket-launch", title: "Launch", text: "Pick a theme, add products, connect your domain and switch on UPI, cards and cash on delivery. Live the same day.", points: ["Free themes, edited without code", "Your own domain and logo", "UPI, cards, wallets and COD"] },
+  { icon: "package", title: "Manage", text: "Every order, shipment, invoice and customer in one place — built for how Indian orders actually work.", points: ["GST invoices, made for you", "Shipping with COD payouts", "Inventory, rentals and returns"] },
+  { icon: "chart-line-up", title: "Grow", text: "Bring shoppers back and turn browsers into buyers with WhatsApp, ads and an AI sales assistant.", points: ["WhatsApp updates and offers", "Meta and Google ads", "Siyaa AI: personal deals that convert"] },
 ];
 const SELLS = ["Fashion & ethnic wear", "Outfit rentals", "Spices & food", "Beauty & personal care", "Jewellery", "Home & décor"];
 
 export default async function HomePage() {
-  const [pricing, apps] = await Promise.all([getPlans(), getApps()]);
+  const [pricing, apps, site] = await Promise.all([getPlans(), getApps(), getSite()]);
   const cloud = INTEGRATIONS.filter((x) => x.status !== "soon" && (x.logo.brand || x.logo.word)).slice(0, 16);
   const lowest = Math.min(...pricing.plans.map((p) => Number(p.priceMonthly) || Infinity));
   const storeApps = apps.filter((a) => APP_LOGO[a.key]).slice(0, 6);
+  const faqs = faq(pricing);
 
   return (
     <>
@@ -84,33 +94,33 @@ export default async function HomePage() {
       <section className="hero">
         <div className="wrap hero__grid">
           <div className="hero__copy">
-            <h1 className="h1">Your brand. Your store. Your growth.</h1>
+            <p className="hero__badge">
+              <Icon name="shield-check" /> Official PayU partner
+            </p>
+            <h1 className="h1 hero__title">
+              <span className="sr-only">Sell online with premium themes, lower fees, one-click checkout and shipping built in.</span>
+              <span aria-hidden="true">Sell online with</span>
+              <WordRotator words={PROMISES} />
+            </h1>
             <p className="lead">
-              Build your online store, accept payments, manage orders and grow your business — all from one platform.
+              A store that looks like a luxury brand, checkout in one tap, UPI, cards and cash on delivery, and couriers across India — on plans that start at {inr(lowest)} a month.
             </p>
             <div className="hero__ctas">
               <a href={`${APP_URL}/register`} className="btn btn--primary btn--lg">
                 Start your free trial
               </a>
-              <Link href="/book-a-call" className="btn btn--ghost btn--lg">
-                Book a free 15-min setup call
+              <Link href="/#themes" className="btn btn--ghost btn--lg">
+                See the themes
               </Link>
             </div>
-            {DEMO_URL && (
-              <p style={{ margin: "14px 0 0" }}>
-                <a href={DEMO_URL} target="_blank" rel="noopener" className="link-arrow">
-                  Or explore a demo store
-                </a>
-              </p>
-            )}
             <ul className="proof">
-              <li><Icon d={I.check} /> {pricing.trialDays}-day free trial, no card</li>
-              <li><Icon d={I.check} /> No product limits</li>
-              <li><Icon d={I.check} /> Plans from {inr(lowest)}/month</li>
+              <li><Icon name="gift" /> {pricing.trialDays}-day free trial, no card</li>
+              <li><Icon name="lightning" /> One-Click Checkout, ₹0 upfront</li>
+              <li><Icon name="truck" /> Shipping with COD payouts</li>
             </ul>
           </div>
 
-          <div className="hero-visual" aria-label="An Oyklane store with a new UPI order, a WhatsApp update and a GST invoice" role="img">
+          <div className="hero-visual" aria-label="A premium oyklane store on a laptop and a phone, with a new UPI order" role="img">
             <div className="browser hero-visual__frame">
               <div className="browser__bar">
                 <span className="browser__dots"><i /><i /><i /></span>
@@ -120,23 +130,14 @@ export default async function HomePage() {
                 <img src="/showcase/atelier.webp" alt="" width="1440" height="1000" fetchPriority="high" />
               </div>
             </div>
+            <div className="hero-phone">
+              <img src="/showcase/atelier-mobile.webp" alt="" width="390" height="844" loading="lazy" />
+            </div>
             <div className="float-card float-card--order">
-              <span className="float-card__icon float-card__icon--green"><Icon d={I.cart} /></span>
+              <span className="float-card__icon float-card__icon--green"><Icon name="shopping-bag" /></span>
               <span>
                 <b>New order #1043 · ₹2,299</b>
-                <small>Paid by UPI · just now</small>
-              </span>
-            </div>
-            <div className="float-card float-card--wa">
-              <span className="float-card__head"><Mark brand="whatsapp" size={16} /> WhatsApp</span>
-              <p>Hi Ananya, your order #1043 is on its way with Delhivery.</p>
-              <small>Sent automatically</small>
-            </div>
-            <div className="float-card float-card--gst">
-              <span className="float-card__icon"><Icon d={I.receipt} /></span>
-              <span>
-                <b>GST invoice ready</b>
-                <small>CGST + SGST · buyer GSTIN added</small>
+                <small>Paid by UPI · courier booked</small>
               </span>
             </div>
           </div>
@@ -158,7 +159,7 @@ export default async function HomePage() {
       {/* ── Real brands ── */}
       <section className="section section--tight" id="brands" aria-labelledby="brands-title">
         <div className="wrap">
-          <h2 className="brands__title" id="brands-title">Indian brands already selling on Oyklane</h2>
+          <h2 className="brands__title" id="brands-title">Indian brands already selling on oyklane</h2>
           <ul className="brands">
             {BRANDS.map((b) => (
               <li key={b.name} className="brand-card">
@@ -169,10 +170,87 @@ export default async function HomePage() {
                     Visit store
                   </a>
                 ) : (
-                  <span className="brand-card__live">Live on Oyklane</span>
+                  <span className="brand-card__live">Live on oyklane</span>
                 )}
               </li>
             ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── Themes (what sets us apart) ── */}
+      <section className="section" id="themes">
+        <div className="wrap">
+          <div className="head">
+            <h2 className="h2">Premium themes, free on every plan</h2>
+            <p className="lead">Designed like the brands you admire — then made yours with your colours, fonts, photos and sections, without code.</p>
+          </div>
+          <ThemeShowcase demoUrl={DEMO_URL} appUrl={APP_URL} />
+        </div>
+      </section>
+
+      {/* ── Lower fees ── */}
+      <section className="section section--alt" id="value">
+        <div className="wrap value">
+          <div className="value__copy">
+            <h2 className="h2">Pay less, keep more of every order</h2>
+            <p className="lead">Plans in rupees, fees you can read at a glance, and nothing to pay before you sell.</p>
+            <Link href="/pricing" className="link-arrow">Compare plans</Link>
+          </div>
+          <ul className="value__facts">
+            <li>
+              <Icon name="currency-inr" />
+              <b>{inr(lowest)}<small>/month</small></b>
+              <span>to start, plus GST. No setup fee, no product limits.</span>
+            </li>
+            <li>
+              <Icon name="lightning" />
+              <b>₹0<small> upfront</small></b>
+              <span>for One-Click Checkout — {pricing.oneClickFeePercent}% only on orders paid through it.</span>
+            </li>
+            <li>
+              <Icon name="money" />
+              <b>{pricing.codCommissionPercent}%<small> on COD</small></b>
+              <span>a flat fee on cash-on-delivery orders, on every plan.</span>
+            </li>
+            <li>
+              <Icon name="gift" />
+              <b>{pricing.trialDays} days<small> free</small></b>
+              <span>to build your store before you pay anything.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* ── Safe payments (PayU partner) ── */}
+      <section className="section" id="trust">
+        <div className="wrap trust">
+          <div className="trust__card">
+            <div className="trust__logos" aria-hidden="true">
+              <Logo word="payu" size={44} />
+              <span className="trust__plus"><Icon name="plus" weight="regular" /></span>
+              <OyklaneTile size={44} />
+            </div>
+            <h2 className="h2">Your payments are safe with oyklane</h2>
+            <p className="lead">oyklane is an official PayU partner. We help you open your PayU account, and every online payment settles straight into your own bank account.</p>
+          </div>
+          <ul className="trust__list">
+            <li>
+              <Icon name="lock-key" />
+              <span><b>Bank-grade checkout</b>Cards and UPI are taken on PayU&apos;s PCI DSS-certified checkout — card details never touch your store.</span>
+            </li>
+            <li>
+              <Icon name="bank" />
+              <span><b>Money goes to you</b>Online payments settle in your own account. Cash on delivery is paid to your bank after delivery.</span>
+            </li>
+            <li>
+              <Icon name="hand-coins" />
+              <span><b>No upfront fees</b>One-Click Checkout costs nothing to switch on — a small fee only when an order is paid through it.</span>
+            </li>
+            <li>
+              <Icon name="seal-check" />
+              <span><b>Set up with you</b>Our team walks you through the PayU paperwork on a free call.</span>
+            </li>
           </ul>
         </div>
       </section>
@@ -185,9 +263,9 @@ export default async function HomePage() {
             <p className="lead">One platform for every stage — no plugins to stitch together, no developer needed.</p>
           </div>
           <ol className="steps">
-            {STEPS.map((st, i) => (
+            {STEPS.map((st) => (
               <li key={st.title} className="step">
-                <span className="step__n">{i + 1}</span>
+                <span className="step__icon"><Icon name={st.icon} /></span>
                 <h3 className="h3">{st.title}</h3>
                 <p>{st.text}</p>
                 <ul>
@@ -215,15 +293,9 @@ export default async function HomePage() {
       <section className="band band--dark" id="why">
         <div className="wrap">
           <div className="head">
-            <h2 className="h2">Why Indian brands choose Oyklane</h2>
+            <h2 className="h2">Why Indian brands choose oyklane</h2>
             <p className="lead">Everything a growing online shop needs, built in and working together — not a pile of plugins.</p>
           </div>
-          <ul className="stats">
-            <li><b>5</b><span>payment gateways, plus cash on delivery</span></li>
-            <li><b>{inr(lowest)}</b><span>a month to start, plus GST</span></li>
-            <li><b>{pricing.trialDays} days</b><span>free trial, no card needed</span></li>
-            <li><b>₹0</b><span>setup fee and product limits</span></li>
-          </ul>
           <div className="strengths">
             {STRENGTHS.map((s) => (
               <article key={s.title} className="strength">
@@ -270,7 +342,7 @@ export default async function HomePage() {
             <div className="feature__copy">
               <span className="icon-tile"><Icon d={I.bolt} /></span>
               <h2 className="h2">Checkout in seconds, not forms</h2>
-              <p className="lead">Mobile number, a one-time code, a saved address, pay — in a popup, without leaving the page. Shoppers who've bought on any Oyklane store find their address already there.</p>
+              <p className="lead">Mobile number, a one-time code, a saved address, pay — in a popup, without leaving the page. Shoppers who've bought on any oyklane store find their address already there.</p>
               <ul className="includes">
                 <li className="chip">UPI, cards and cash on delivery</li>
                 <li className="chip">Codes by SMS or WhatsApp</li>
@@ -339,7 +411,7 @@ export default async function HomePage() {
           <div className="market__copy">
             <span className="icon-tile"><Icon d={I.grid} /></span>
             <h2 className="h2">The Oyklane Store: themes and apps for your shop</h2>
-            <p className="lead">Add reviews, phone login, rentals, Instagram feeds and more — made by Oyklane and independent developers. Install in one click; paid ones are billed with your plan. Developers can sell their own themes and apps.</p>
+            <p className="lead">Add reviews, phone login, rentals, Instagram feeds and more — made by oyklane and independent developers. Install in one click; paid ones are billed with your plan. Developers can sell their own themes and apps.</p>
             <div className="hero__ctas">
               <a href={MARKET_URL} className="btn btn--primary btn--lg" target="_blank" rel="noopener">
                 Visit the Oyklane Store
@@ -449,16 +521,19 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── Themes ── */}
-      <section className="section" id="themes">
-        <div className="wrap">
-          <div className="head">
-            <h2 className="h2">Eight free themes. Your brand in every one.</h2>
-            <p className="lead">Start from a design made for what you sell, then make it yours — colours, fonts, photos and sections, all without code.</p>
+      {/* ── Reviews (Super admin ▸ Website; real ones only) ── */}
+      {site.reviews.length > 0 && (
+        <section className="section section--alt" id="reviews">
+          <div className="wrap reviews">
+            <div className="reviews__copy">
+              <h2 className="h2">Sellers on oyklane, in their words</h2>
+              <p className="lead">Brands across India run their stores, payments and shipping on oyklane.</p>
+              <Link href="/stores" className="link-arrow">Visit their stores</Link>
+            </div>
+            <ReviewDeck reviews={site.reviews} />
           </div>
-          <ThemeShowcase demoUrl={DEMO_URL} appUrl={APP_URL} />
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── Pricing ── */}
       <section className="section section--alt" id="pricing">
@@ -481,7 +556,7 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="faq">
-            {faq(pricing).map(([q, a]) => (
+            {faqs.map(([q, a]) => (
               <details key={q}>
                 <summary>{q}</summary>
                 <p>{a}</p>
@@ -490,6 +565,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(pricing, faqs)).replace(/</g, "\\u003c") }} />
 
       {/* ── Call to action ── */}
       <section className="band band--violet">
@@ -510,4 +587,25 @@ export default async function HomePage() {
       </section>
     </>
   );
+}
+
+/** oyklane as a product (live plan prices) and the FAQ, for search results
+ * and AI answers. */
+function structuredData(pricing, faqs) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        name: "oyklane",
+        url: SITE_URL,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "E-commerce platform for Indian brands: premium store themes, One-Click Checkout, UPI and cash on delivery, shipping and GST invoices.",
+        publisher: { "@id": `${SITE_URL}/#org` },
+        offers: pricing.plans.map((p) => ({ "@type": "Offer", name: p.name, price: Number(p.priceMonthly), priceCurrency: "INR", category: "subscription", url: `${SITE_URL}/pricing` })),
+      },
+      { "@type": "FAQPage", mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
+    ],
+  };
 }

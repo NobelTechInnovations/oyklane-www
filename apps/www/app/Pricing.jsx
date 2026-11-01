@@ -4,13 +4,7 @@ import { useState } from "react";
 
 const inr = (n) => `₹${Number(n || 0).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`;
 
-function Tick() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12.5l4.5 4.5L19 7.5" />
-    </svg>
-  );
-}
+const Tick = () => <i className="ico ph-duotone ph-check-circle" aria-hidden="true" />;
 
 /** The plans, live from the platform (see plans.js), with a monthly/yearly
  * switch. Each plan lists what it adds over the one before it. */
@@ -68,10 +62,10 @@ export function Pricing({ data, appUrl }) {
                 </li>
                 <li>
                   <Tick /> {p.commissionPercent}% fee per paid order
-                  {data.codFeeDiscountPercent > 0 && <span className="muted"> · {Math.max(0, p.commissionPercent - data.codFeeDiscountPercent)}% on cash on delivery</span>}
+                  <span className="muted"> · {data.codCommissionPercent}% on cash on delivery</span>
                 </li>
                 <li className="plan__optional">
-                  <Tick /> One-Click Checkout: +{data.oneClickFeePercent}% per order (optional)
+                  <Tick /> One-Click Checkout: no upfront fee, +{data.oneClickFeePercent}% only on orders paid through it
                 </li>
               </ul>
               <a href={`${appUrl}/register`} className={`btn ${featured ? "btn--primary" : "btn--ghost"}`}>
@@ -83,7 +77,7 @@ export function Pricing({ data, appUrl }) {
       </div>
       <p className="plans__note">
         {data.trialDays}-day free trial{data.introEnabled ? `, then ${inr(data.introPrice)} for your first month` : ""} on any plan. Prices exclude 18% GST.
-        One-Click Checkout is an optional app: it adds {data.oneClickFeePercent}% to the fee on orders paid through it.
+        One-Click Checkout has no upfront or setup fee — it adds {data.oneClickFeePercent}% only to orders paid through it.
       </p>
     </>
   );

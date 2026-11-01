@@ -15,7 +15,7 @@ const WORDMARKS = {
 
 /**
  * A logo tile: a real brand mark (white tile, the brand's colour), a
- * wordmark, or — for Oyklane's own features — a line icon on the brand
+ * wordmark, or — for oyklane's own features — a line icon on the brand
  * gradient. `size` is the tile's width in px.
  *   <Logo brand="razorpay" />  <Logo word="payu" />  <Logo icon="bolt" />
  */

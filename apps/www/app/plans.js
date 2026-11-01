@@ -7,7 +7,7 @@ const FALLBACK = {
   introPrice: 49,
   annualDiscountPercent: 20,
   oneClickFeePercent: 0.3,
-  codFeeDiscountPercent: 0.5,
+  codCommissionPercent: 0.5,
   whatsappMessagePrice: 0.5,
   plans: [
     { key: "starter", name: "Starter", tagline: "Everything to open your store.", priceMonthly: 899, priceYearly: 8630.4, commissionPercent: 2, staffLimit: 2, features: [] },
@@ -41,7 +41,8 @@ function present(plan) {
  * plan (app/api/revalidate). The page never waits on the API per visit. */
 export async function getPlans() {
   try {
-    const res = await fetch(`${API_URL}/api/auth/plans`, { next: { revalidate: 60 } });
+    // Live on every request: a price saved in Super admin shows at once.
+    const res = await fetch(`${API_URL}/api/auth/plans`, { cache: "no-store" });
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data?.plans?.length) throw new Error("no plans");
@@ -52,7 +53,7 @@ export async function getPlans() {
       introPrice: data.introPrice ?? FALLBACK.introPrice,
       annualDiscountPercent: Math.max(0, ...data.plans.map(yearlyOff)),
       oneClickFeePercent: data.oneClickFeePercent ?? FALLBACK.oneClickFeePercent,
-      codFeeDiscountPercent: data.codFeeDiscountPercent ?? FALLBACK.codFeeDiscountPercent,
+      codCommissionPercent: data.codCommissionPercent ?? FALLBACK.codCommissionPercent,
       whatsappMessagePrice: data.whatsappMessagePrice ?? FALLBACK.whatsappMessagePrice,
       whatsappMessagePrices: data.whatsappMessagePrices || null,
       plans: data.plans.map(present),

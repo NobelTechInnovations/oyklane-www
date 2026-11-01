@@ -4,30 +4,57 @@ import { SiteFooter } from "./components/SiteFooter";
 import { Reveal } from "./components/Reveal";
 import { Analytics } from "./components/Analytics";
 import { UtmCapture } from "./components/UtmCapture";
-import { API_URL } from "./components/site";
+import { API_URL, SOCIAL, SUPPORT_EMAIL } from "./components/site";
+import { getSite, SITE_URL } from "./site-data";
 
-export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://oyklane.com"),
-  title: {
-    default: "Oyklane — Your brand. Your store. Your growth.",
-    template: "%s · Oyklane",
-  },
-  description:
-    "Oyklane is the modern e-commerce platform made for Indian sellers who want to launch, manage and grow their own brands: a store you design without code, One-Click Checkout, UPI and cash on delivery, GST invoices, automated customer emails and an app store — live in an afternoon.",
-  // Google Search Console's "HTML tag" ownership check (Google Cloud's
-  // OAuth branding needs oyklane.com verified). Set the code on Vercel.
-  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }),
-  openGraph: {
-    title: "Oyklane — Your brand. Your store. Your growth.",
-    description: "Launch, manage and grow your own brand — UPI, COD and GST built in.",
-    images: ["/showcase/atelier.webp"],
-    type: "website",
-  },
-};
+/** The title, description, keywords and share image come from Super
+ * admin ▸ Website (site-data.js), so a change there shows at once —
+ * in Google, and in the WhatsApp preview once WhatsApp refetches it. */
+export async function generateMetadata() {
+  const site = await getSite();
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: site.title, template: "%s · oyklane" },
+    description: site.description,
+    keywords: site.keywords,
+    applicationName: "oyklane",
+    // Google Search Console's "HTML tag" ownership check (Google Cloud's
+    // OAuth branding needs oyklane.com verified). Set the code on Vercel.
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }),
+    openGraph: {
+      type: "website",
+      siteName: "oyklane",
+      locale: "en_IN",
+      title: site.title,
+      description: site.description,
+      images: [{ url: site.ogImage, width: 1200, height: 630, alt: "oyklane — premium online stores for Indian brands" }],
+    },
+    twitter: { card: "summary_large_image", title: site.title, description: site.description, images: [site.ogImage] },
+    robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  };
+}
 
 export const viewport = {
   themeColor: "#ffffff",
   colorScheme: "light",
+};
+
+// Who we are, for search engines and AI assistants.
+const ORG_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#org`,
+      name: "oyklane",
+      url: SITE_URL,
+      logo: `${SITE_URL}/android-chrome-512x512.png`,
+      email: SUPPORT_EMAIL,
+      sameAs: SOCIAL.map((s) => s.url),
+      areaServed: "IN",
+    },
+    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: "oyklane", url: SITE_URL, inLanguage: "en-IN", publisher: { "@id": `${SITE_URL}/#org` } },
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -36,8 +63,13 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* Plus Jakarta Sans for everything (docs/brand-guidelines.md). */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" />
+        {/* Inter for reading, Inter Tight for headlines. */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" />
+        {/* Icons: Phosphor from jsDelivr (components/Icon.jsx). */}
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_LD).replace(/</g, "\\u003c") }} />
       </head>
       <body>
         <SiteNav />

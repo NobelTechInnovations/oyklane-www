@@ -179,7 +179,7 @@ export function StorefrontMock() {
         <span className="browser__url">loomwear.oyklane.com</span>
       </div>
       <div className="browser__screen">
-        <img src="/showcase/atelier.webp" alt="A clothing store built on Oyklane with the Atelier theme" width="1440" height="1000" fetchPriority="high" />
+        <img src="/showcase/atelier.webp" alt="A clothing store built on oyklane with the Atelier theme" width="1440" height="1000" fetchPriority="high" />
       </div>
     </div>
   );

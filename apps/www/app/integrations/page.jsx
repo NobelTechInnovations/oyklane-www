@@ -6,7 +6,7 @@ import { Logo } from "../components/Logo";
 
 export const metadata = {
   title: "Integrations",
-  description: "How Oyklane connects to payments, couriers, ads, WhatsApp, email and your own tools — step by step, and what's coming next.",
+  description: "How oyklane connects to payments, couriers, ads, WhatsApp, email and your own tools — step by step, and what's coming next.",
 };
 
 const OVERVIEW = [
@@ -28,7 +28,7 @@ function Card({ x }) {
   );
 }
 
-/** Everything Oyklane connects to, as a guide: how each kind connects, step by step. */
+/** Everything oyklane connects to, as a guide: how each kind connects, step by step. */
 export default function IntegrationsPage() {
   // Real brands, each mark once.
   const seen = new Set();
@@ -44,7 +44,7 @@ export default function IntegrationsPage() {
       <section className="hero hero--page">
         <div className="wrap page-hero">
           <div>
-            <h1 className="h1">How Oyklane connects to your tools</h1>
+            <h1 className="h1">How oyklane connects to your tools</h1>
             <p className="lead">
               Payments, couriers, ads, WhatsApp, email and your own software — what each connection does, how to switch it on, and what&apos;s coming next.
             </p>

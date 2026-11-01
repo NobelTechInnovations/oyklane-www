@@ -3,7 +3,7 @@ import { LegalPage, ContactBlock, LEGAL } from "../legal/LegalPage";
 
 export const metadata = {
   title: "Terms of Service",
-  description: "The terms for using Oyklane to build and run an online store — plans and billing, your responsibilities as a seller, and ours.",
+  description: "The terms for using oyklane to build and run an online store — plans and billing, your responsibilities as a seller, and ours.",
   alternates: { canonical: "/terms" },
 };
 
@@ -16,7 +16,7 @@ const sections = [
     body: (
       <>
         <p>
-          These terms are an agreement between you and {LEGAL.name} (“Oyklane”, “we”) for using oyklane.com, the seller admin, stores hosted on Oyklane,
+          These terms are an agreement between you and {LEGAL.name} (“oyklane”, “we”) for using oyklane.com, the seller admin, stores hosted on oyklane,
           our apps and our APIs (together, the “Service”). By creating an account or using the Service you agree to them, and to our{" "}
           <Link href="/privacy">Privacy Policy</Link>.
         </p>
@@ -88,7 +88,7 @@ const sections = [
     title: "Payments to your store",
     body: (
       <ul>
-        <li>Your customers pay through your own payment gateway account (Razorpay, Cashfree, PayU, Stripe or others you connect) or cash on delivery. Money goes from the gateway to you; Oyklane doesn&apos;t hold your funds.</li>
+        <li>Your customers pay through your own payment gateway account (Razorpay, Cashfree, PayU, Stripe or others you connect) or cash on delivery. Money goes from the gateway to you; oyklane doesn&apos;t hold your funds.</li>
         <li>Your agreement with your gateway — fees, settlement, chargebacks, refunds — is between you and the gateway.</li>
       </ul>
     ),
@@ -109,7 +109,7 @@ const sections = [
     body: (
       <ul>
         <li>You own your store&apos;s content — products, images, text, customer lists. You give us permission to host, copy, display and adapt it as needed to run the Service and your store.</li>
-        <li>Oyklane, its software, themes and brand belong to us. While your account is active you may use the themes and features on your store; you may not copy, resell or reverse-engineer the Service.</li>
+        <li>oyklane, its software, themes and brand belong to us. While your account is active you may use the themes and features on your store; you may not copy, resell or reverse-engineer the Service.</li>
         <li>AI features (product descriptions, the Help assistant) make suggestions — check them before you publish; you&apos;re responsible for what you put on your store.</li>
         <li>If you send us feedback, we may use it without owing you anything.</li>
       </ul>
@@ -130,8 +130,8 @@ const sections = [
     title: "For shoppers",
     body: (
       <p>
-        When you buy from a store on Oyklane, your purchase is with that store, not with Oyklane: the store is responsible for the products, delivery,
-        returns and refunds. Your Oyklane account sign-in (see the <Link href="/privacy#collect">Privacy Policy</Link>) is offered for convenience and you can
+        When you buy from a store on oyklane, your purchase is with that store, not with oyklane: the store is responsible for the products, delivery,
+        returns and refunds. Your oyklane account sign-in (see the <Link href="/privacy#collect">Privacy Policy</Link>) is offered for convenience and you can
         sign out at any time.
       </p>
     ),
@@ -182,5 +182,5 @@ const sections = [
 ];
 
 export default function TermsPage() {
-  return <LegalPage eyebrow="Legal" title="Terms of Service" intro="The terms for building and running a store on Oyklane." sections={sections} />;
+  return <LegalPage eyebrow="Legal" title="Terms of Service" intro="The terms for building and running a store on oyklane." sections={sections} />;
 }

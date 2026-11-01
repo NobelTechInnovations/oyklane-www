@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const KEYS = ["source", "medium", "campaign", "term", "content"];
 
 /**
- * Where this visitor came from, for Oyklane's own Acquisition report:
+ * Where this visitor came from, for oyklane's own Acquisition report:
  * the latest UTM-tagged (or referred) landing is kept in the `oy_utm`
  * cookie on .oyklane.com, so sign-up at store.oyklane.com can send it;
  * and one visit per browser session is counted at /api/public/visit.

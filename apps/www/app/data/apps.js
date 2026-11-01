@@ -26,7 +26,7 @@ export async function getApps() {
 export const APP_CATEGORY = { sales_channel: "Sales channels", selling: "Selling", automation: "Automation", checkout: "Checkout", customers: "Customers", marketing: "Marketing", analytics: "Analytics", utility: "Utilities", other: "Other" };
 
 // Each app's logo (components/Logo.jsx): the brand's own mark for apps that
-// connect a brand, an icon for Oyklane's own apps.
+// connect a brand, an icon for oyklane's own apps.
 export const APP_LOGO = {
   flow: { icon: "flow" },
   "one-click-checkout": { icon: "bolt" },

@@ -10,7 +10,7 @@ export function SiteFooter() {
       <div className="wrap">
         <div className="footer__grid">
           <div>
-            <Link href="/" className="logo" aria-label="Oyklane home">
+            <Link href="/" className="logo" aria-label="oyklane home">
               <OyklaneLogo height={30} />
             </Link>
             <p className="muted" style={{ marginTop: 14, maxWidth: "34ch", fontSize: 14.5 }}>
@@ -51,7 +51,7 @@ export function SiteFooter() {
               <li><Link href="/apps">Apps</Link></li>
               <li><a href={MARKET_URL}>Oyklane Store</a></li>
               <li><Link href="/pricing">Pricing</Link></li>
-              <li><Link href="/vs-shopify">Oyklane vs Shopify</Link></li>
+              <li><Link href="/vs-shopify">oyklane vs Shopify</Link></li>
               <li><Link href="/developers">API docs</Link></li>
             </ul>
           </div>
@@ -82,11 +82,11 @@ export function SiteFooter() {
         </div>
         <p className="muted" style={{ fontSize: 13, margin: "0 0 18px", maxWidth: "90ch" }}>
           Sellers can sign in with Google to show their Google reviews on their store, list their products in Google Merchant Center and set up Google
-          Analytics — Oyklane uses that data only for those features. See how in our <Link href="/privacy#google">Privacy Policy</Link>.
+          Analytics — oyklane uses that data only for those features. See how in our <Link href="/privacy#google">Privacy Policy</Link>.
         </p>
         <div className="footer__bottom">
           <span>
-            © {new Date().getFullYear()} {LEGAL.name} · Oyklane is a product of {LEGAL.name}, {LEGAL.address} · GSTIN {LEGAL.gstin}. Made in India.
+            © {new Date().getFullYear()} {LEGAL.name} · oyklane is a product of {LEGAL.name}, {LEGAL.address} · GSTIN {LEGAL.gstin}. Made in India.
           </span>
           <span>
             Prices in INR, plus 18% GST · <Link href="/privacy">Privacy</Link> · <Link href="/terms">Terms</Link>

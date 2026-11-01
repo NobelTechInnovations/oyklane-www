@@ -21,10 +21,10 @@ export default async function PricingPage() {
 
   const faq = [
     ["Is there a free trial?", `Yes — ${pricing.trialDays} days on any plan${pricing.introEnabled ? `, then ${inr(pricing.introPrice)} for your first month` : ""}. You choose autopay (UPI or card) to carry on; nothing is charged during the trial.`],
-    ["What's the fee per order?", `A small percentage of each paid order — ${plans.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} — and ${pricing.codFeeDiscountPercent}% less on cash-on-delivery orders. It's billed with your plan, never taken from your payments.`],
+    ["What's the fee per order?", `A small percentage of each paid order — ${plans.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} — and ${pricing.codCommissionPercent}% on cash-on-delivery orders, on every plan. It's billed with your plan, never taken from your payments.`],
     ["Can I change plans later?", "Anytime. Upgrades apply straight away; downgrades at the end of the period you've paid for."],
     ["Do apps cost extra?", "Most apps are free, including Flow and One-Click Checkout (which adds a small fee on orders paid through it). Paid apps show their price before you install; Phone Login is free to install and costs ₹0.50 for each SMS code sent."],
-    ["What do WhatsApp messages cost?", `${waPrice} per message (+ GST) from Oyklane's WhatsApp number. Connect your own WhatsApp Business number and there's no Oyklane fee — Meta charges you directly for its messages.`],
+    ["What do WhatsApp messages cost?", `${waPrice} per message (+ GST) from oyklane's WhatsApp number. Connect your own WhatsApp Business number and there's no oyklane fee — Meta charges you directly for its messages.`],
     ["Is GST included?", "No — prices are before 18% GST, and every bill comes with a GST invoice."],
   ];
 
@@ -60,10 +60,10 @@ export default async function PricingPage() {
             <div className="card" id="whatsapp">
               <h3>WhatsApp messages</h3>
               <p>
-                <strong>{waPrice} per message</strong> sent from Oyklane&apos;s WhatsApp number.
+                <strong>{waPrice} per message</strong> sent from oyklane&apos;s WhatsApp number.
               </p>
               <p>
-                <strong>No Oyklane fee</strong> when you connect your own WhatsApp Business number — Meta&apos;s own message charges apply, billed to you by Meta.
+                <strong>No oyklane fee</strong> when you connect your own WhatsApp Business number — Meta&apos;s own message charges apply, billed to you by Meta.
               </p>
             </div>
             <div className="card">
@@ -111,14 +111,12 @@ export default async function PricingPage() {
                       <td key={p.key}>{p.commissionPercent}%</td>
                     ))}
                   </tr>
-                  {pricing.codFeeDiscountPercent > 0 && (
-                    <tr>
-                      <td>Fee per cash-on-delivery order</td>
-                      {plans.map((p) => (
-                        <td key={p.key}>{Math.max(0, p.commissionPercent - pricing.codFeeDiscountPercent)}%</td>
-                      ))}
-                    </tr>
-                  )}
+                  <tr>
+                    <td>Fee per cash-on-delivery order</td>
+                    {plans.map((p) => (
+                      <td key={p.key}>{pricing.codCommissionPercent}%</td>
+                    ))}
+                  </tr>
                   <tr>
                     <td>
                       One-Click Checkout (optional app)

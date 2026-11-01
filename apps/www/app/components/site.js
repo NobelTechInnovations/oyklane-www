@@ -4,7 +4,7 @@ export const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:300
 export const DEMO_URL = process.env.NEXT_PUBLIC_DEMO_STORE_URL || "https://demo.oyklane.com";
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://api.oyklane.com").replace(/\/$/, "");
 
-// How to reach Oyklane.
+// How to reach oyklane.
 export const SUPPORT_EMAIL = "support@oyklane.com";
 export const WHATSAPP = { display: "+91 89554 87847", url: "https://wa.me/918955487847" };
 export const SOCIAL = [

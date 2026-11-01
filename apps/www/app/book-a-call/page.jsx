@@ -4,7 +4,7 @@ import { BookCallForm } from "./BookCallForm";
 
 export const metadata = {
   title: "Book a free setup call",
-  description: "Book a free 15-minute call with the Oyklane team to set up your store, payments and shipping.",
+  description: "Book a free 15-minute call with the oyklane team to set up your store, payments and shipping.",
   alternates: { canonical: "/book-a-call" },
 };
 

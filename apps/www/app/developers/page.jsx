@@ -4,7 +4,7 @@ import { APP_URL, API_URL } from "../components/site";
 
 export const metadata = {
   title: "API docs",
-  description: "The Oyklane REST API and webhooks: connect your store to a CRM, ERP, accounting or any tool. Products, inventory, orders and customers, with signed webhooks.",
+  description: "The oyklane REST API and webhooks: connect your store to a CRM, ERP, accounting or any tool. Products, inventory, orders and customers, with signed webhooks.",
 };
 
 const BASE = `${API_URL}/api/v1`;
@@ -70,7 +70,7 @@ const TOC = [
   ["webhooks", "Webhooks"],
   ["verify", "Verifying a webhook"],
   ["crm", "Connect a CRM"],
-  ["import", "Move a store to Oyklane"],
+  ["import", "Move a store to oyklane"],
   ["mcp", "AI agents (MCP)"],
   ["errors", "Errors and limits"],
 ];
@@ -136,7 +136,7 @@ export default function DevelopersPage() {
       <section className="hero hero--page">
         <div className="wrap">
           <span className="icon-tile"><Icon d={I.code} /></span>
-          <h1 className="h1" style={{ marginTop: 20 }}>Oyklane API</h1>
+          <h1 className="h1" style={{ marginTop: 20 }}>oyklane API</h1>
           <p className="lead">
             Connect your store to a CRM, ERP, accounting software, a warehouse or your own app. Read and update products, stock, orders and customers over REST, and get
             signed webhooks the moment something happens.
@@ -238,8 +238,8 @@ export default function DevelopersPage() {
 
           <h2 id="webhooks" className="h2">Webhooks</h2>
           <p>
-            Instead of asking every few minutes, let Oyklane tell you. In <b>Settings ▸ API &amp; webhooks</b>, add an endpoint (an <code>https://</code> URL of your server or
-            your CRM&apos;s webhook URL) and pick its events. Oyklane sends a <code>POST</code> with the JSON body (the same shape as the API) within seconds.
+            Instead of asking every few minutes, let oyklane tell you. In <b>Settings ▸ API &amp; webhooks</b>, add an endpoint (an <code>https://</code> URL of your server or
+            your CRM&apos;s webhook URL) and pick its events. oyklane sends a <code>POST</code> with the JSON body (the same shape as the API) within seconds.
           </p>
           <div className="docs__table">
             <table>
@@ -292,7 +292,7 @@ export default function DevelopersPage() {
             </li>
           </ol>
 
-          <h2 id="import" className="h2">Move a store to Oyklane</h2>
+          <h2 id="import" className="h2">Move a store to oyklane</h2>
           <p>
             Bring a whole store across — from Shopify or anywhere — with one key that has <code>write_products</code>, <code>write_customers</code>, <code>write_discounts</code>{" "}
             and <code>import_orders</code>. Send each record&apos;s id from the old store as <code>externalId</code> (e.g. <code>shopify:8123</code>): it&apos;s unique in your store, so
@@ -304,7 +304,7 @@ export default function DevelopersPage() {
             <li><b>Collections</b> — link products with <code>productExternalIds</code>.</li>
             <li><b>Customers</b> — matched by externalId, email, then phone; a match is only filled in, never overwritten.</li>
             <li><b>Discounts</b> — imported codes stay off product pages unless you send <code>showOnStore: true</code>.</li>
-            <li><b>Past orders</b> — <code>POST /orders/import</code> keeps the date and number. Nothing a new order sets off happens: no payment, stock change, emails, WhatsApp, webhooks or Oyklane fees.</li>
+            <li><b>Past orders</b> — <code>POST /orders/import</code> keeps the date and number. Nothing a new order sets off happens: no payment, stock change, emails, WhatsApp, webhooks or oyklane fees.</li>
           </ol>
           <Code label="Import a past order">{`curl -X POST ${BASE}/orders/import \\
   -H "Authorization: Bearer oyk_…" -H "Content-Type: application/json" \\

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { WHATSAPP } from "../components/site";
 
 /**
- * Who Oyklane is, for the legal pages. Set on Vercel (www project) when
+ * Who oyklane is, for the legal pages. Set on Vercel (www project) when
  * known — the registered address and the Grievance Officer's name are
  * required to be published under India's IT Rules and the DPDP Act.
  */

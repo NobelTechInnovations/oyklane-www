@@ -8,10 +8,10 @@ const SALES_STEPS = [50000, 100000, 200000, 300000, 500000, 1000000, 2000000, 50
 /**
  * Monthly cost on each platform for the visitor's sales: plan price + the
  * platform's own fee on orders. Payment-gateway charges (Razorpay, PayU…)
- * are the same on both and left out. Oyklane's fee is on every paid order,
- * lower on cash on delivery; Shopify's is on online payments only.
+ * are the same on both and left out. oyklane's fee is on every paid order,
+ * a fixed lower rate on cash on delivery; Shopify's is on online payments only.
  */
-export function Calculator({ oyklane, shopify, oneClickFeePercent, codFeeDiscountPercent = 0.5 }) {
+export function Calculator({ oyklane, shopify, oneClickFeePercent, codCommissionPercent = 0.5 }) {
   const [sales, setSales] = useState(200000);
   const [onlinePct, setOnlinePct] = useState(60);
   const [yearly, setYearly] = useState(false);
@@ -21,9 +21,9 @@ export function Calculator({ oyklane, shopify, oneClickFeePercent, codFeeDiscoun
     const online = (sales * onlinePct) / 100;
     const o = oyklane.map((p) => {
       const plan = yearly ? p.priceYearly / 12 : p.priceMonthly;
-      const codRate = Math.max(0, p.commissionPercent - codFeeDiscountPercent);
+      const codRate = codCommissionPercent;
       const fee = (online * p.commissionPercent) / 100 + ((sales - online) * codRate) / 100 + (oneClick ? (online * oneClickFeePercent) / 100 : 0);
-      return { name: `Oyklane ${p.name}`, plan, fee, total: plan + fee, ours: true };
+      return { name: `oyklane ${p.name}`, plan, fee, total: plan + fee, ours: true };
     });
     const s = shopify.map((p) => {
       const plan = yearly ? p.yearly : p.monthly;
@@ -31,7 +31,7 @@ export function Calculator({ oyklane, shopify, oneClickFeePercent, codFeeDiscoun
       return { name: `Shopify ${p.name}`, plan, fee, total: plan + fee };
     });
     return { o, s, bestO: o.reduce((a, b) => (b.total < a.total ? b : a)), bestS: s.reduce((a, b) => (b.total < a.total ? b : a)) };
-  }, [sales, onlinePct, yearly, oneClick, oyklane, shopify, oneClickFeePercent, codFeeDiscountPercent]);
+  }, [sales, onlinePct, yearly, oneClick, oyklane, shopify, oneClickFeePercent, codCommissionPercent]);
 
   const diff = rows.bestS.total - rows.bestO.total;
   const salesIndex = Math.max(0, SALES_STEPS.findIndex((v) => v >= sales));
@@ -56,7 +56,7 @@ export function Calculator({ oyklane, shopify, oneClickFeePercent, codFeeDiscoun
             <input type="checkbox" checked={yearly} onChange={(e) => setYearly(e.target.checked)} /> Pay yearly (both)
           </label>
           <label className="calc__check">
-            <input type="checkbox" checked={oneClick} onChange={(e) => setOneClick(e.target.checked)} /> Use Oyklane&apos;s One-Click Checkout (+{oneClickFeePercent}% on online orders)
+            <input type="checkbox" checked={oneClick} onChange={(e) => setOneClick(e.target.checked)} /> Use oyklane&apos;s One-Click Checkout (+{oneClickFeePercent}% on online orders)
           </label>
         </div>
       </div>
@@ -77,8 +77,8 @@ export function Calculator({ oyklane, shopify, oneClickFeePercent, codFeeDiscoun
           {Math.abs(diff) < 1
             ? "About the same on both."
             : diff > 0
-              ? `Oyklane costs ${inr(diff)} less a month (${inr(diff * 12)} a year).`
-              : "Oyklane comes with cash on delivery, UPI, WhatsApp order updates, abandoned-checkout reminders and shipping built in — no extra apps to find and pay for."}
+              ? `oyklane costs ${inr(diff)} less a month (${inr(diff * 12)} a year).`
+              : "oyklane comes with cash on delivery, UPI, WhatsApp order updates, abandoned-checkout reminders and shipping built in — no extra apps to find and pay for."}
         </p>
       </div>
 

@@ -1,11 +1,11 @@
 /**
- * Everything Oyklane connects to. `status` is honest:
+ * Everything oyklane connects to. `status` is honest:
  *   built  — part of every store, set up in Settings
  *   app    — an app from the app store
  *   paid   — an app with a monthly price
  *   soon   — being built; not available yet
  * `logo` is what components/Logo.jsx draws: a real brand mark (brand), a
- * wordmark for brands without one (word), or a line icon for Oyklane's own
+ * wordmark for brands without one (word), or a line icon for oyklane's own
  * features (icon).
  */
 export const CATEGORIES = [
@@ -46,7 +46,7 @@ export const INTEGRATIONS = [
   { name: "Meta Pixel", category: "marketing", status: "app", logo: { brand: "meta" }, text: "Continue with Facebook, pick your pixel — every shopping event, checkout included.", popular: true },
   { name: "Google Analytics 4", category: "marketing", status: "app", logo: { brand: "googleanalytics" }, text: "Page views, add to cart, checkout and purchase events in GA4." },
   { name: "Meta Ads", category: "marketing", status: "app", logo: { brand: "facebook" }, text: "Create Facebook and Instagram campaigns, see results next to your real orders and approve suggestions (Growth and Pro)." },
-  { name: "Google Ads", category: "marketing", status: "app", logo: { brand: "google" }, text: "Search, Shopping and Performance Max campaigns with keyword ideas and purchase tracking — or create a Google Ads account from Oyklane." },
+  { name: "Google Ads", category: "marketing", status: "app", logo: { brand: "google" }, text: "Search, Shopping and Performance Max campaigns with keyword ideas and purchase tracking — or create a Google Ads account from oyklane." },
   { name: "Google & YouTube", category: "marketing", status: "app", logo: { brand: "google" }, text: "List your products free on Google Shopping, Search, YouTube and Maps through Merchant Center, kept in sync." },
   { name: "Custom scripts", category: "marketing", status: "app", logo: { icon: "code" }, text: "Add any tag — Microsoft Clarity, Hotjar, a chat widget — to every page." },
   { name: "Product reviews", category: "marketing", status: "app", logo: { icon: "star" }, text: "Stars on every card, verified-buyer badges and CSV import." },
@@ -54,9 +54,9 @@ export const INTEGRATIONS = [
 
   // Email & messaging
   { name: "Order emails", category: "messaging", status: "built", logo: { icon: "mail" }, text: "Confirmation, shipping, delivery, refund and return emails in your store's name." },
-  { name: "WhatsApp order updates", category: "messaging", status: "built", logo: { brand: "whatsapp" }, text: "Order confirmed, shipped and delivered on WhatsApp — from Oyklane's number with your store's name, or from your own." },
+  { name: "WhatsApp order updates", category: "messaging", status: "built", logo: { brand: "whatsapp" }, text: "Order confirmed, shipped and delivered on WhatsApp — from oyklane's number with your store's name, or from your own." },
   { name: "WhatsApp codes", category: "messaging", status: "built", logo: { brand: "whatsapp" }, text: "One-time sign-in and checkout codes on WhatsApp." },
-  { name: "SMS codes", category: "messaging", status: "built", logo: { icon: "chat" }, text: "One-time codes by SMS, sent by Oyklane — ₹0.50 each, added to your bill." },
+  { name: "SMS codes", category: "messaging", status: "built", logo: { icon: "chat" }, text: "One-time codes by SMS, sent by oyklane — ₹0.50 each, added to your bill." },
   { name: "WhatsApp Business", category: "messaging", status: "app", logo: { brand: "whatsapp" }, text: "Your own number: an inbox for replies, templates and broadcasts to customers who opted in (Growth and Pro)." },
   { name: "Email marketing sync", category: "messaging", status: "soon", logo: { brand: "mailchimp" }, text: "Send subscribers to Mailchimp and similar tools." },
 
@@ -74,12 +74,12 @@ export const INTEGRATIONS = [
 /** How each kind of integration connects — the steps a seller follows. */
 export const GUIDES = {
   payments: {
-    intro: "Money goes straight from your shopper to your own gateway account. Oyklane never holds it.",
+    intro: "Money goes straight from your shopper to your own gateway account. oyklane never holds it.",
     steps: ["Open Settings ▸ Payments in your dashboard.", "Pick your gateway and paste its keys — try test mode first if you like.", "Switch it on. Shoppers see UPI, cards, net banking and wallets at checkout, with each brand's logo.", "Refund from the order page; the gateway sends the money back."],
   },
   checkout: {
     intro: "Faster sign-in and checkout with a mobile number and a one-time code — no passwords.",
-    steps: ["Open Apps and install One-Click Checkout or Phone Login.", "Choose how codes go out: SMS (built in, ₹0.50 each) or WhatsApp.", "Shoppers sign in or check out with their number and the code.", "Their saved addresses come back on any Oyklane store they shop at."],
+    steps: ["Open Apps and install One-Click Checkout or Phone Login.", "Choose how codes go out: SMS (built in, ₹0.50 each) or WhatsApp.", "Shoppers sign in or check out with their number and the code.", "Their saved addresses come back on any oyklane store they shop at."],
   },
   shipping: {
     intro: "Ship with any courier today. One-click courier connections are on the way.",
@@ -87,11 +87,11 @@ export const GUIDES = {
   },
   marketing: {
     intro: "Run ads and measure them against the orders your store actually received.",
-    steps: ["Open Apps ▸ Meta Ads or Google Ads.", "Sign in with Facebook or Google and choose your ad account — or create a Google Ads account from Oyklane.", "Switch on purchase tracking; Oyklane adds the pixel or tag to your store for you.", "Create campaigns with guided steps, then see results in plain words and approve suggestions."],
+    steps: ["Open Apps ▸ Meta Ads or Google Ads.", "Sign in with Facebook or Google and choose your ad account — or create a Google Ads account from oyklane.", "Switch on purchase tracking; oyklane adds the pixel or tag to your store for you.", "Create campaigns with guided steps, then see results in plain words and approve suggestions."],
   },
   messaging: {
     intro: "Order emails and WhatsApp updates work from day one. Your own WhatsApp number is optional.",
-    steps: ["Order emails go out in your store's name — nothing to set up.", "WhatsApp order updates go from Oyklane's number with your store's name.", "To use your own number: Apps ▸ WhatsApp ▸ connect Facebook ▸ pick your WhatsApp Business number ▸ Activate.", "Then reply from the Inbox, create your own templates and send broadcasts to customers who opted in."],
+    steps: ["Order emails go out in your store's name — nothing to set up.", "WhatsApp order updates go from oyklane's number with your store's name.", "To use your own number: Apps ▸ WhatsApp ▸ connect Facebook ▸ pick your WhatsApp Business number ▸ Activate.", "Then reply from the Inbox, create your own templates and send broadcasts to customers who opted in."],
   },
   automation: {
     intro: "Emails that send themselves after the right moments.",

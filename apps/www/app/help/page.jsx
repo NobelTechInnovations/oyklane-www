@@ -5,7 +5,7 @@ import { APP_URL, SUPPORT_EMAIL, WHATSAPP, inr } from "../components/site";
 
 export const metadata = {
   title: "Help centre",
-  description: "Answers to common questions about starting and running your store on Oyklane — trial, payments, shipping, domains, WhatsApp and support.",
+  description: "Answers to common questions about starting and running your store on oyklane — trial, payments, shipping, domains, WhatsApp and support.",
   alternates: { canonical: "/help" },
 };
 
@@ -40,7 +40,7 @@ export default async function HelpPage() {
           "Razorpay, Cashfree, PayU, Stripe and PayPal, plus cash on delivery. You connect your own gateway account, so shoppers' payments go straight to you.",
         ],
         [
-          "Does Oyklane take a cut of my payments?",
+          "Does oyklane take a cut of my payments?",
           <>
             No. Your plan has a small fee per paid order, billed with your plan — never taken from your payments. See <Link href="/pricing">Pricing</Link>.
           </>,
@@ -61,7 +61,7 @@ export default async function HelpPage() {
         ],
         [
           "Can I send WhatsApp messages to customers?",
-          `Yes — order updates and messages from Oyklane's WhatsApp number at ${waPrice} per message (+ GST), or connect your own WhatsApp Business number with no Oyklane fee (Meta's charges apply).`,
+          `Yes — order updates and messages from oyklane's WhatsApp number at ${waPrice} per message (+ GST), or connect your own WhatsApp Business number with no oyklane fee (Meta's charges apply).`,
         ],
         ["Do shoppers get reminded about carts they left?", "Yes, on every plan. A shopper who reached checkout and left gets one reminder email with a link that restores their cart."],
       ],

@@ -3,7 +3,7 @@ import { LegalPage, ContactBlock, LEGAL } from "../legal/LegalPage";
 
 export const metadata = {
   title: "Privacy Policy",
-  description: "What Oyklane collects, why, who it's shared with, how long it's kept, and your rights under India's Digital Personal Data Protection Act.",
+  description: "What oyklane collects, why, who it's shared with, how long it's kept, and your rights under India's Digital Personal Data Protection Act.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -14,17 +14,17 @@ const sections = [
     body: (
       <>
         <p>
-          {LEGAL.name} (“Oyklane”, “we”) runs an e-commerce platform for businesses in India: sellers build an online store on Oyklane, sell through it, and
-          manage orders, payments, marketing and apps from the Oyklane admin. This policy covers <strong>oyklane.com</strong>, the seller admin
+          {LEGAL.name} (“oyklane”, “we”) runs an e-commerce platform for businesses in India: sellers build an online store on oyklane, sell through it, and
+          manage orders, payments, marketing and apps from the oyklane admin. This policy covers <strong>oyklane.com</strong>, the seller admin
           (store.oyklane.com), stores on <strong>*.oyklane.com</strong> and on sellers&apos; own domains, and our apps and APIs.
         </p>
         <ul>
           <li>
-            <strong>Sellers</strong> (and their staff) who create an Oyklane account: we decide how their data is used, so we are its data fiduciary.
+            <strong>Sellers</strong> (and their staff) who create an oyklane account: we decide how their data is used, so we are its data fiduciary.
           </li>
           <li>
-            <strong>Shoppers</strong> who buy from a store on Oyklane: the store is the seller you&apos;re buying from and decides how your data is used for
-            your order — Oyklane processes it on the store&apos;s behalf. The store&apos;s own privacy policy also applies.
+            <strong>Shoppers</strong> who buy from a store on oyklane: the store is the seller you&apos;re buying from and decides how your data is used for
+            your order — oyklane processes it on the store&apos;s behalf. The store&apos;s own privacy policy also applies.
           </li>
         </ul>
       </>
@@ -49,8 +49,8 @@ const sections = [
           <li>Sign-in: one-time codes sent by email, SMS or WhatsApp, or a password you set (hashed), or Google sign-in.</li>
           <li>Cart and visit information: products viewed, pages visited, device type and campaign links you arrived from, so the store can understand its sales.</li>
           <li>
-            <strong>Oyklane account</strong>: when you sign in to a store with something that proves who you are (an emailed code, Google or a phone code), your
-            browser keeps a signed token with that proven email or phone. Another Oyklane store you visit uses it to sign you in to the account you already have
+            <strong>oyklane account</strong>: when you sign in to a store with something that proves who you are (an emailed code, Google or a phone code), your
+            browser keeps a signed token with that proven email or phone. Another oyklane store you visit uses it to sign you in to the account you already have
             there — and creates one only when you open your account, sign-in or checkout on that store. You can sign out at any time, which removes it from
             your browser.
           </li>
@@ -87,7 +87,7 @@ const sections = [
         <li>To sign people in and keep accounts, stores and payments secure, and to prevent fraud and abuse.</li>
         <li>To bill sellers for their plan and paid apps.</li>
         <li>To answer support requests, including with the Help assistant (an AI model answers from our help articles and the seller&apos;s store settings).</li>
-        <li>To improve Oyklane, using aggregated information that doesn&apos;t identify anyone.</li>
+        <li>To improve oyklane, using aggregated information that doesn&apos;t identify anyone.</li>
         <li>To meet legal obligations (tax and accounting records, lawful requests).</li>
       </ul>
     ),
@@ -99,7 +99,7 @@ const sections = [
       <>
         <div className="legal__note">
           <p style={{ margin: 0 }}>
-            Oyklane&apos;s use and transfer to any other app of information received from Google APIs will adhere to the{" "}
+            oyklane&apos;s use and transfer to any other app of information received from Google APIs will adhere to the{" "}
             <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">
               Google API Services User Data Policy
             </a>
@@ -109,10 +109,10 @@ const sections = [
         <ul>
           <li>We use Google data only to provide the features the seller turned on: showing their reviews on their store, listing their products in Merchant Center and reporting its status, setting up Google Analytics and Tag Manager on their store, and creating, reporting on and managing their own Google Ads campaigns.</li>
           <li>Tag Manager: we list the seller&apos;s web containers and, if they ask, create one for their store. We add only the container ID to their store and don&apos;t change the tags inside it.</li>
-          <li>Google Ads: we never create campaigns, change budgets or spend on a seller&apos;s behalf unless they ask for that in Oyklane, including automatic rules they switch on. New campaigns start paused. If a seller has no Google Ads account, we can create one for them under Oyklane&apos;s manager account and invite them as its admin.</li>
+          <li>Google Ads: we never create campaigns, change budgets or spend on a seller&apos;s behalf unless they ask for that in oyklane, including automatic rules they switch on. New campaigns start paused. If a seller has no Google Ads account, we can create one for them under oyklane&apos;s manager account and invite them as its admin.</li>
           <li>We don&apos;t sell it, don&apos;t use it to show ads to anyone or target ads for anyone else, and don&apos;t use it to develop or train generalised AI or machine-learning models.</li>
           <li>Our staff don&apos;t read it, except with the seller&apos;s permission for support, for security, or where the law requires.</li>
-          <li>Google&apos;s access tokens are stored encrypted. Disconnecting Google in Settings ▸ Connected accounts deletes them and revokes our access at Google; you can also remove Oyklane at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">myaccount.google.com/permissions</a>.</li>
+          <li>Google&apos;s access tokens are stored encrypted. Disconnecting Google in Settings ▸ Connected accounts deletes them and revokes our access at Google; you can also remove oyklane at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">myaccount.google.com/permissions</a>.</li>
         </ul>
       </>
     ),
@@ -123,8 +123,8 @@ const sections = [
     body: (
       <ul>
         <li>We use data from Meta only for the seller&apos;s Meta apps: showing their Instagram posts on their store, keeping their catalogue in sync, listing their pixels, running the ads and WhatsApp messages they create.</li>
-        <li>We never post, message or spend on a seller&apos;s behalf unless they ask for that in Oyklane.</li>
-        <li>Access tokens are stored encrypted. Disconnecting Facebook in Settings ▸ Connected accounts deletes them; you can also remove Oyklane in Facebook ▸ Settings ▸ Apps and websites. See <Link href="/data-deletion">Data deletion</Link>.</li>
+        <li>We never post, message or spend on a seller&apos;s behalf unless they ask for that in oyklane.</li>
+        <li>Access tokens are stored encrypted. Disconnecting Facebook in Settings ▸ Connected accounts deletes them; you can also remove oyklane in Facebook ▸ Settings ▸ Apps and websites. See <Link href="/data-deletion">Data deletion</Link>.</li>
       </ul>
     ),
   },
@@ -137,13 +137,13 @@ const sections = [
         <ul>
           <li><strong>With the store</strong> you buy from — your order and account details, so they can fulfil and support your order.</li>
           <li>
-            <strong>With service providers</strong> who run parts of Oyklane for us under contract: hosting and databases (Railway, Vercel, Supabase), image
+            <strong>With service providers</strong> who run parts of oyklane for us under contract: hosting and databases (Railway, Vercel, Supabase), image
             storage (ImageKit), email (ZeptoMail), SMS and WhatsApp (Zoho, Twilio, MSG91, Meta), AI models for the Help assistant and writing tools, and our
             billing partner (Razorpay).
           </li>
           <li><strong>With services a seller connects</strong> — their payment gateway, couriers, Google, Meta, analytics — as needed for what they turned on.</li>
-          <li><strong>When the law requires</strong> it, or to protect people, our users or Oyklane from fraud or harm.</li>
-          <li><strong>If Oyklane is sold or merged</strong>, with the new owner, who must keep this policy&apos;s promises.</li>
+          <li><strong>When the law requires</strong> it, or to protect people, our users or oyklane from fraud or harm.</li>
+          <li><strong>If oyklane is sold or merged</strong>, with the new owner, who must keep this policy&apos;s promises.</li>
         </ul>
       </>
     ),
@@ -196,7 +196,7 @@ const sections = [
     title: "Cookies",
     body: (
       <ul>
-        <li><strong>Needed to work</strong>: your sign-in session, your cart, the Oyklane account sign-in described above, and security protections.</li>
+        <li><strong>Needed to work</strong>: your sign-in session, your cart, the oyklane account sign-in described above, and security protections.</li>
         <li><strong>Preferences</strong>: for example light or dark mode on oyklane.com.</li>
         <li>
           <strong>Our own measurement</strong>: on oyklane.com and the seller admin we use Google Analytics and the Meta pixel to count visits and sign-ups and
@@ -210,7 +210,7 @@ const sections = [
   {
     id: "children",
     title: "Children",
-    body: <p>Oyklane is for businesses and adults. We don&apos;t knowingly collect personal data from children under 18 without verifiable consent from a parent or guardian; if you believe we have, write to us and we&apos;ll delete it.</p>,
+    body: <p>oyklane is for businesses and adults. We don&apos;t knowingly collect personal data from children under 18 without verifiable consent from a parent or guardian; if you believe we have, write to us and we&apos;ll delete it.</p>,
   },
   {
     id: "changes",
@@ -229,7 +229,7 @@ export default function PrivacyPage() {
     <LegalPage
       eyebrow="Legal"
       title="Privacy Policy"
-      intro="What Oyklane collects, why, who it's shared with, how long it's kept, and how to use your rights."
+      intro="What oyklane collects, why, who it's shared with, how long it's kept, and how to use your rights."
       sections={sections}
     />
   );

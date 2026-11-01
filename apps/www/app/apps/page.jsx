@@ -7,7 +7,7 @@ import { AppsBrowser } from "./AppsBrowser";
 
 export const metadata = {
   title: "App store",
-  description: "Add Flow automations, One-Click Checkout, Phone Login, product reviews and pixels to your Oyklane store — installed apps sit right in your sidebar.",
+  description: "Add Flow automations, One-Click Checkout, Phone Login, product reviews and pixels to your oyklane store — installed apps sit right in your sidebar.",
 };
 
 export default async function AppsPage() {
