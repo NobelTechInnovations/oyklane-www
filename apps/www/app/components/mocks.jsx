@@ -23,7 +23,7 @@ export function EditorMock() {
         </div>
         <div className="editor__preview">
           <img src="/showcase/atelier-product.webp" alt="" width="1440" height="1000" loading="lazy" />
-          <span className="editor__cursor">Drag to reorder</span>
+          {/* <span className="editor__cursor">Drag to reorder</span> */}
         </div>
       </div>
     </div>
