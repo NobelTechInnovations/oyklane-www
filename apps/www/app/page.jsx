@@ -231,8 +231,13 @@ export default async function HomePage() {
               <span className="trust__plus"><Icon name="plus" weight="regular" /></span>
               <OyklaneTile size={44} />
             </div>
-            <h2 className="h2">Your payments are safe with oyklane</h2>
-            <p className="lead">oyklane is an official PayU partner. We help you open your PayU account, and every online payment settles straight into your own bank account.</p>
+            <h2 className="h2">PayU, our payment partner</h2>
+            <p className="lead">oyklane is an official PayU partner. Open your PayU account with us and take orders with no extra gateway fees — every online payment settles straight into your own bank account.</p>
+            <ul className="trust__facts">
+              <li><b>0%</b><span>on UPI payments</span></li>
+              <li><b>₹0</b><span>extra gateway fee</span></li>
+              <li><b>None</b><span>hidden charges</span></li>
+            </ul>
           </div>
           <ul className="trust__list">
             <li>

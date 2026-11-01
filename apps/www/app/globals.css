@@ -3709,3 +3709,22 @@ button {
 .reviews__copy .lead {
   margin-top: 14px;
 }
+.trust__facts {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 22px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.trust__facts b {
+  display: block;
+  font: 600 30px/1.1 var(--font-display);
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.trust__facts span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+}
