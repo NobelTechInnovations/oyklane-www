@@ -17,6 +17,8 @@ const nextConfig = {
   // below this host's real core count, so the default one-worker-per-core
   // build kills itself with `spawn ... EAGAIN`.
   experimental: { cpus: 2 },
+  // No "X-Powered-By: Next.js" header.
+  poweredByHeader: false,
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },

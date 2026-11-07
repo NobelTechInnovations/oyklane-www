@@ -2,12 +2,9 @@ import Link from "next/link";
 import { ThemeShowcase } from "./ThemeShowcase";
 import { Pricing } from "./Pricing";
 import { getPlans } from "./plans";
-import { getApps, APP_LOGO } from "./data/apps";
 import { Icon, I } from "./components/Icon";
 import { APP_URL, DEMO_URL, MARKET_URL, inr } from "./components/site";
-import { HeroShowcase } from "./components/HeroShowcase";
-import { EditorMock, CheckoutMock, FlowMock, HelpMock } from "./components/mocks";
-import { INTEGRATIONS } from "./data/integrations";
+import { CheckoutMock, FlowMock, HelpMock } from "./components/mocks";
 import { Logo, Mark } from "./components/Logo";
 import { WordRotator } from "./components/WordRotator";
 import { OyklaneTile } from "./components/OyklaneLogo";
@@ -33,22 +30,11 @@ const WORKS_WITH = [
 ];
 
 /** Why sellers pick oyklane — the highlighted band. */
-const STRENGTHS = [
-  { icon: I.cod, title: "Made for India", text: "UPI, cards, net banking and cash on delivery. GST invoices with HSN codes and your buyer's GSTIN." },
-  { icon: I.bolt, title: "Checkout in seconds", text: "One-Click Checkout: mobile number, a code, a saved address, pay — without leaving the page." },
-  { icon: I.chat, title: "WhatsApp and SMS built in", text: "Order updates, an inbox for replies and sign-in codes — from your number or ours." },
-  { icon: I.megaphone, title: "Ads from your dashboard", text: "Run Meta and Google campaigns, see results in plain words and approve suggestions." },
-  { icon: I.wallet, title: "Your money, directly", text: "Payments land in your own gateway account. oyklane never holds your money." },
-  { icon: I.layers, title: "No code needed", text: "Eight free themes, a drag-and-drop editor, your own domain with SSL — set up in an afternoon." },
-  { icon: I.life, title: "Help in your language", text: "Ask in English or Hinglish. An assistant that knows your store, and real people behind it." },
-  { icon: I.tag, title: "Simple pricing", text: "Monthly plans in ₹, no product limits, no setup fee. Pay-as-you-go extras like ₹0.50 per SMS." },
-];
 
 const GROW = [
   { logo: { brand: "meta" }, title: "Meta Ads", text: "Create Facebook and Instagram campaigns, check what's selling and pause what isn't — without Ads Manager.", href: "/integrations" },
   { logo: { brand: "google" }, title: "Google Ads", text: "Search, Shopping and Performance Max campaigns with keyword ideas and purchase tracking on your store.", href: "/integrations" },
   { logo: { brand: "whatsapp" }, title: "WhatsApp", text: "Order updates customers actually read, a shared inbox, templates and broadcasts to people who opted in.", href: "/integrations" },
-  { logo: { icon: "flow" }, title: "Flow emails", text: "Thank first-time buyers, ask for reviews after delivery and win back quiet customers — automatically.", href: "/apps" },
 ];
 
 const faq = (pricing) => [
@@ -82,10 +68,8 @@ const STEPS = [
 const SELLS = ["Fashion & ethnic wear", "Outfit rentals", "Spices & food", "Beauty & personal care", "Jewellery", "Home & décor"];
 
 export default async function HomePage() {
-  const [pricing, apps, site] = await Promise.all([getPlans(), getApps(), getSite()]);
-  const cloud = INTEGRATIONS.filter((x) => x.status !== "soon" && (x.logo.brand || x.logo.word)).slice(0, 16);
+  const [pricing, site] = await Promise.all([getPlans(), getSite()]);
   const lowest = Math.min(...pricing.plans.map((p) => Number(p.priceMonthly) || Infinity));
-  const storeApps = apps.filter((a) => APP_LOGO[a.key]).slice(0, 6);
   const faqs = faq(pricing);
 
   return (
@@ -189,39 +173,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── Lower fees ── */}
-      <section className="section section--alt" id="value">
-        <div className="wrap value">
-          <div className="value__copy">
-            <h2 className="h2">Pay less, keep more of every order</h2>
-            <p className="lead">Plans in rupees, fees you can read at a glance, and nothing to pay before you sell.</p>
-            <Link href="/pricing" className="link-arrow">Compare plans</Link>
-          </div>
-          <ul className="value__facts">
-            <li>
-              <Icon name="currency-inr" />
-              <b>{inr(lowest)}<small>/month</small></b>
-              <span>to start, plus GST. No setup fee, no product limits.</span>
-            </li>
-            <li>
-              <Icon name="lightning" />
-              <b>₹0<small> upfront</small></b>
-              <span>for One-Click Checkout — {pricing.oneClickFeePercent}% only on orders paid through it.</span>
-            </li>
-            <li>
-              <Icon name="money" />
-              <b>{pricing.codCommissionPercent}%<small> on COD</small></b>
-              <span>a flat fee on cash-on-delivery orders, on every plan.</span>
-            </li>
-            <li>
-              <Icon name="gift" />
-              <b>{pricing.trialDays} days<small> free</small></b>
-              <span>to build your store before you pay anything.</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       {/* ── Safe payments (PayU partner) ── */}
       <section className="section" id="trust">
         <div className="wrap trust">
@@ -294,56 +245,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── Strengths ── */}
-      <section className="band band--dark" id="why">
-        <div className="wrap">
-          <div className="head">
-            <h2 className="h2">Why Indian brands choose oyklane</h2>
-            <p className="lead">Everything a growing online shop needs, built in and working together — not a pile of plugins.</p>
-          </div>
-          <div className="strengths">
-            {STRENGTHS.map((s) => (
-              <article key={s.title} className="strength">
-                <span className="icon-tile icon-tile--dark"><Icon d={s.icon} /></span>
-                <h3 className="h3">{s.title}</h3>
-                <p>{s.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Product tour ── */}
-      <section className="section" id="tour">
-        <div className="wrap">
-          <div className="head head--center">
-            <h2 className="h2">See it in action</h2>
-            <p className="lead">Your storefront, checkout, automations and dashboard — the screens you'll use every day.</p>
-          </div>
-          <HeroShowcase />
-        </div>
-      </section>
-
       {/* ── Features ── */}
       <section className="section section--alt" id="features">
         <div className="wrap">
-          <div className="feature" id="builder">
-            <div className="feature__copy">
-              <span className="icon-tile"><Icon d={I.store} /></span>
-              <h2 className="h2">A store that looks like your brand</h2>
-              <p className="lead">Start from a theme made for what you sell, then change colours, fonts, photos and every section. Drag the blocks on your product page into the order that sells.</p>
-              <ul className="includes">
-                <li className="chip">8 free themes — fashion, jewellery, food, drinks, bags and one-product brands</li>
-                <li className="chip">Drag-and-drop sections and product blocks</li>
-                <li className="chip">Your own domain with free SSL</li>
-                <li className="chip">Fast and mobile-first</li>
-              </ul>
-              <p className="feature__more"><Link href="/#themes" className="link-arrow">See the themes</Link></p>
-            </div>
-            <div className="feature__visual"><EditorMock /></div>
-          </div>
-
-          <div className="feature feature--flip" id="checkout">
+          <div className="feature" id="checkout">
             <div className="feature__copy">
               <span className="icon-tile"><Icon d={I.bolt} /></span>
               <h2 className="h2">Checkout in seconds, not forms</h2>
@@ -359,7 +264,7 @@ export default async function HomePage() {
             <div className="feature__visual"><CheckoutMock /></div>
           </div>
 
-          <div className="feature" id="flow">
+          <div className="feature feature--flip" id="flow">
             <div className="feature__copy">
               <span className="icon-tile"><Icon d={I.flow} /></span>
               <h2 className="h2">Emails that send themselves</h2>
@@ -375,7 +280,7 @@ export default async function HomePage() {
             <div className="feature__visual"><FlowMock /></div>
           </div>
 
-          <div className="feature feature--flip" id="help">
+          <div className="feature" id="help">
             <div className="feature__copy">
               <span className="icon-tile"><Icon d={I.life} /></span>
               <h2 className="h2">Stuck? Answers in seconds</h2>
@@ -410,49 +315,16 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── Oyklane Store (marketplace) ── */}
-      <section className="section section--alt" id="store">
-        <div className="wrap market">
-          <div className="market__copy">
-            <span className="icon-tile"><Icon d={I.grid} /></span>
-            <h2 className="h2">The Oyklane Store: themes and apps for your shop</h2>
-            <p className="lead">Add reviews, phone login, rentals, Instagram feeds and more — made by oyklane and independent developers. Install in one click; paid ones are billed with your plan. Developers can sell their own themes and apps.</p>
-            <div className="hero__ctas">
-              <a href={MARKET_URL} className="btn btn--primary btn--lg" target="_blank" rel="noopener">
-                Visit the Oyklane Store
-              </a>
-              <a href={`${MARKET_URL}/partners/dashboard`} className="btn btn--ghost btn--lg" target="_blank" rel="noopener">
-                Developer dashboard
-              </a>
-            </div>
-          </div>
-          <div className="market__grid">
-            {storeApps.map((a) => (
-              <div key={a.key} className="market-app">
-                <Logo {...APP_LOGO[a.key]} size={40} />
-                <span>
-                  <b>{a.name}</b>
-                  <small>{a.usagePrice ? `₹${Number(a.usagePrice.amount).toFixed(2)} per ${a.usagePrice.unit}` : a.priceMonthly ? `${inr(a.priceMonthly)}/month` : "Free"}</small>
-                </span>
-              </div>
-            ))}
-            <div className="market-theme">
-              <img src="/showcase/lumiere.webp" alt="" width="1440" height="1000" loading="lazy" />
-              <span>
-                <b>Lumière theme</b>
-                <small>Jewellery and luxury</small>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── Also built in ── */}
       <section className="section" id="more">
         <div className="wrap">
           <div className="head">
             <h2 className="h2">Also built in</h2>
-            <p className="lead">The everyday parts of running an online shop in India, ready on day one.</p>
+            <p className="lead">The everyday parts of running an online shop in India, ready on day one — plus payments, couriers, pixels and apps connected in a click.</p>
+            <p className="head__links">
+              <Link href="/integrations" className="link-arrow">Every integration</Link>
+              <a href={MARKET_URL} className="link-arrow">Themes and apps in the Oyklane Store</a>
+            </p>
           </div>
           <div className="bento">
             <article className="tile tile--wide">
@@ -505,24 +377,6 @@ export default async function HomePage() {
               </pre>
             </article>
           </div>
-        </div>
-      </section>
-
-      {/* ── Integrations ── */}
-      <section className="section section--alt" id="integrations">
-        <div className="wrap">
-          <div className="head">
-            <h2 className="h2">Plugged into the tools you already use</h2>
-            <p className="lead">Payments, couriers, pixels, WhatsApp and your own code through our API — connected in a few clicks, no plugins to hunt for.</p>
-          </div>
-          <div className="int-cloud" aria-hidden="true">
-            {cloud.map((x) => (
-              <Logo key={x.name} {...x.logo} size={76} title={x.name} />
-            ))}
-          </div>
-          <p>
-            <Link href="/integrations" className="link-arrow">Explore the integrations library</Link>
-          </p>
         </div>
       </section>
 
