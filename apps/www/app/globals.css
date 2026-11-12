@@ -3734,6 +3734,38 @@ button {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.trust__badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 22px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink, #18181b);
+  text-decoration: none;
+  width: fit-content;
+  max-width: 100%;
+}
+.trust__badge img {
+  width: 72px;
+  height: 72px;
+  flex: none;
+  object-fit: contain;
+}
+.trust__badge b {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+.trust__badge span {
+  font-size: 13px;
+  color: #52525b;
+}
+.trust__badge:hover b {
+  text-decoration: underline;
+}
+
 /* Links under a section heading (home ▸ Also built in). */
 .head__links {
   display: flex;
