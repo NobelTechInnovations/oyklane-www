@@ -192,7 +192,7 @@ export default async function HomePage() {
             <a className="trust__badge" href="https://u.payu.in/Sr3hDyF8ZLlg" target="_blank" rel="noopener noreferrer">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img width="100" height="100" src="https://partner.payu.in/packs/media/icons/certified-partner-9aa55562.png" alt="PayU certified partner badge" loading="lazy" />
-              <span><b>PayU certified partner</b>See oyklane on PayU&apos;s partner page</span>
+              <span><b>PayU certified partner</b>Join PayU and unlock special payment gateway rates.</span>
             </a>
           </div>
           <ul className="trust__list">
