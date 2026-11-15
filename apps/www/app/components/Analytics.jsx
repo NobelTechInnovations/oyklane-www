@@ -1,7 +1,12 @@
 import Script from "next/script";
+import { API_URL } from "./site";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
+
+// Set in Super admin ▸ Tracking: the pixel loads from there, so changing it
+// needs no new build. A Vercel variable still wins when it's set.
+const RUNTIME = `(function(){fetch(${JSON.stringify(String(API_URL || "").replace(/\/$/, ""))}+"/api/public/tracking").then(function(r){return r.json()}).then(function(c){if(c.metaPixelId&&!window.fbq){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',c.metaPixelId);fbq('track','PageView');}}).catch(function(){})})();`;
 
 /** GA4 and the Meta pixel for oyklane's own funnel (page views here; the
  * sign-up and setup events are sent from the admin) — only when their IDs
@@ -16,6 +21,11 @@ export function Analytics() {
             {`window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',${JSON.stringify(GA_ID)});`}
           </Script>
         </>
+      )}
+      {!META_PIXEL_ID && (
+        <Script id="oy-tracking" strategy="afterInteractive">
+          {RUNTIME}
+        </Script>
       )}
       {META_PIXEL_ID && (
         <Script id="meta-pixel" strategy="afterInteractive">
