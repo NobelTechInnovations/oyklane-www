@@ -11,8 +11,6 @@ export const metadata = {
 
 export default async function HelpPage() {
   const pricing = await getPlans();
-  const wa = pricing.whatsappMessagePrices;
-  const waPrice = wa ? `₹${Number(wa.utility).toFixed(2)} (updates) to ₹${Number(wa.marketing).toFixed(2)} (offers)` : `₹${Number(pricing.whatsappMessagePrice).toFixed(2)}`;
   const groups = [
     {
       title: "Getting started",
@@ -61,7 +59,7 @@ export default async function HelpPage() {
         ],
         [
           "Can I send WhatsApp messages to customers?",
-          `Yes — order updates and messages from oyklane's WhatsApp number at ${waPrice} per message (+ GST), or connect your own WhatsApp Business number with no oyklane fee (Meta's charges apply).`,
+          "Yes. Login codes and order updates go free from oyklane's WhatsApp number. For offers and broadcasts, connect your own WhatsApp Business number — the tools are free and you pay Meta only for what you send.",
         ],
         ["Do shoppers get reminded about carts they left?", "Yes, on every plan. A shopper who reached checkout and left gets one reminder email with a link that restores their cart."],
       ],

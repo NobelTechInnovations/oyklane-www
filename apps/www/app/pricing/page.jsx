@@ -16,15 +16,13 @@ export default async function PricingPage() {
   const seen = new Map();
   for (const p of plans) for (const f of p.features || []) if (!seen.has(f.key)) seen.set(f.key, f);
   const rows = [...seen.values()];
-  const wa = pricing.whatsappMessagePrices;
-  const waPrice = wa ? `₹${Number(wa.utility).toFixed(2)} (updates) to ₹${Number(wa.marketing).toFixed(2)} (offers)` : `₹${Number(pricing.whatsappMessagePrice).toFixed(2)}`;
 
   const faq = [
     ["Is there a free trial?", `Yes — ${pricing.trialDays} days on any plan${pricing.introEnabled ? `, then ${inr(pricing.introPrice)} for your first month` : ""}. You choose autopay (UPI or card) to carry on; nothing is charged during the trial.`],
     ["What's the fee per order?", `A small percentage of each paid order — ${plans.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} — and ${pricing.codCommissionPercent}% on cash-on-delivery orders, on every plan. It's billed with your plan, never taken from your payments.`],
     ["Can I change plans later?", "Anytime. Upgrades apply straight away; downgrades at the end of the period you've paid for."],
-    ["Do apps cost extra?", "Most apps are free, including Flow and One-Click Checkout (which adds a small fee on orders paid through it). Paid apps show their price before you install; Phone Login is free to install and costs ₹0.50 for each SMS code sent."],
-    ["What do WhatsApp messages cost?", `${waPrice} per message (+ GST) from oyklane's WhatsApp number. Connect your own WhatsApp Business number and there's no oyklane fee — Meta charges you directly for its messages.`],
+    ["Do apps cost extra?", "Most apps are free, including Flow and One-Click Checkout (which adds a small fee on orders paid through it). Paid apps show their price before you install; Phone Login is free to install — WhatsApp codes are free and SMS codes cost ₹0.50 each."],
+    ["What do WhatsApp messages cost?", "Free + usage. oyklane's WhatsApp tools are free, and login codes and order updates sent from oyklane's number are free too. Offers and broadcasts go from your own WhatsApp Business number, and you pay only for what you send — Meta bills you directly at its own rates."],
     ["Is GST included?", "No — prices are before 18% GST, and every bill comes with a GST invoice."],
   ];
 
@@ -60,16 +58,16 @@ export default async function PricingPage() {
             <div className="card" id="whatsapp">
               <h3>WhatsApp messages</h3>
               <p>
-                <strong>{waPrice} per message</strong> sent from oyklane&apos;s WhatsApp number.
+                <strong>Free + usage.</strong> Login codes and order updates from oyklane&apos;s WhatsApp number are free.
               </p>
               <p>
-                <strong>No oyklane fee</strong> when you connect your own WhatsApp Business number — Meta&apos;s own message charges apply, billed to you by Meta.
+                Offers and broadcasts go from your own WhatsApp Business number — you pay only for what you send, billed to you by Meta at its rates.
               </p>
             </div>
             <div className="card">
               <h3>Phone Login codes</h3>
               <p>
-                <strong>₹0.50 per SMS code</strong> sent when shoppers sign in with their mobile number. The app is free to install.
+                <strong>₹0.50 per SMS code.</strong> WhatsApp codes are free — you choose WhatsApp, SMS or both. The app is free to install.
               </p>
             </div>
             <div className="card">

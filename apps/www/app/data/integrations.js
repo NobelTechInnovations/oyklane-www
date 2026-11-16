@@ -31,7 +31,7 @@ export const INTEGRATIONS = [
 
   // Checkout & login
   { name: "One-Click Checkout", category: "checkout", status: "app", logo: { icon: "bolt" }, text: "Phone, one-time code, saved address, pay — in a popup, from any page.", popular: true, featured: true },
-  { name: "Phone Login", category: "checkout", status: "app", logo: { icon: "phone" }, text: "Shoppers sign in with their mobile number and a code by SMS or WhatsApp. Free to install; ₹0.50 per SMS code." },
+  { name: "Phone Login", category: "checkout", status: "app", logo: { icon: "phone" }, text: "Shoppers sign in with their mobile number and a code by WhatsApp, SMS or both. Free to install; WhatsApp codes free, ₹0.50 per SMS code." },
   { name: "Google sign-in", category: "checkout", status: "built", logo: { brand: "google" }, text: "Continue with Google for shoppers and sellers." },
   { name: "GST at checkout", category: "checkout", status: "built", logo: { icon: "receipt" }, text: "Buyers add their GSTIN; invoices work out CGST, SGST or IGST." },
 
@@ -79,7 +79,7 @@ export const GUIDES = {
   },
   checkout: {
     intro: "Faster sign-in and checkout with a mobile number and a one-time code — no passwords.",
-    steps: ["Open Apps and install One-Click Checkout or Phone Login.", "Choose how codes go out: SMS (built in, ₹0.50 each) or WhatsApp.", "Shoppers sign in or check out with their number and the code.", "Their saved addresses come back on any oyklane store they shop at."],
+    steps: ["Open Apps and install One-Click Checkout or Phone Login.", "Choose how codes go out: WhatsApp (free), SMS (₹0.50 each) or both.", "Shoppers sign in or check out with their number and the code.", "Their saved addresses come back on any oyklane store they shop at."],
   },
   shipping: {
     intro: "Ship with any courier today. One-click courier connections are on the way.",
