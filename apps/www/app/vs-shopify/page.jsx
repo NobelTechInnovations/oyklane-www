@@ -6,7 +6,7 @@ import { Calculator } from "./Calculator";
 
 export const metadata = {
   title: "oyklane vs Shopify",
-  description: "Compare what an Indian brand pays each month on oyklane and Shopify — plan prices and platform fees on orders, with a calculator for your own sales.",
+  description: "Compare what a brand pays each month on oyklane and Shopify — plan prices and platform fees on orders, with a calculator for your own sales.",
   alternates: { canonical: "/vs-shopify" },
 };
 
@@ -69,16 +69,16 @@ export default async function VsShopifyPage() {
               <li>GST invoices with HSN codes and your buyer&apos;s GSTIN (Growth and Pro).</li>
               <li>WhatsApp order updates from our number or your own, and abandoned-checkout reminder emails on every plan.</li>
               <li>Oyklane Shipping: compare couriers for each pincode, book in one click and print labels.</li>
-              <li>Free themes made for Indian brands, and help from a real team — <Link href="/book-a-call">book a free setup call</Link>.</li>
+              <li>Free themes made for modern brands, and help from a real team — <Link href="/book-a-call">book a free setup call</Link>.</li>
             </ul>
 
-            <h2>Why Indian brands choose oyklane</h2>
+            <h2>Why brands choose oyklane</h2>
             <ul>
-              <li>Made for India from the start: UPI, cash on delivery, GST invoices with HSN codes and pincode-level shipping.</li>
+              <li>Made for how customers really pay and receive orders: UPI, cash on delivery, GST invoices with HSN codes and pincode-level shipping.</li>
               <li>One-Click Checkout, WhatsApp order updates and abandoned-checkout reminders are built into the platform — no third-party apps to find and connect.</li>
-              <li>Shipping across India from your orders page: courier prices for each pincode, one-click booking, labels and tracking.</li>
+              <li>Shipping from your orders page: courier prices for each pincode, one-click booking, labels and tracking.</li>
               <li>Siyaa, the AI sales assistant, prepares personal WhatsApp offers for shoppers likely to buy (Pro).</li>
-              <li>A team in India that helps you set up — <Link href="/book-a-call">book a free 15-minute call</Link>.</li>
+              <li>A real team that helps you set up — <Link href="/book-a-call">book a free 15-minute call</Link>.</li>
             </ul>
           </article>
         </div>

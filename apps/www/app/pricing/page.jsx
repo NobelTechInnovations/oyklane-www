@@ -6,7 +6,7 @@ import { APP_URL, inr } from "../components/site";
 
 export const metadata = {
   title: "Pricing",
-  description: "Simple monthly plans for Indian brands, with a free trial. Prices in INR, plus GST — no setup fees, no product limits.",
+  description: "Simple monthly plans for growing brands, with a free trial. Prices in INR, plus GST — no setup fees, no product limits.",
 };
 
 export default async function PricingPage() {

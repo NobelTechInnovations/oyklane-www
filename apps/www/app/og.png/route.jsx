@@ -36,7 +36,7 @@ export async function GET() {
           </svg>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 22, maxWidth: 900 }}>
-          <span style={{ fontSize: 68, fontWeight: 600, color: INK, lineHeight: 1.05, letterSpacing: -2.5 }}>Premium online stores for Indian brands</span>
+          <span style={{ fontSize: 68, fontWeight: 600, color: INK, lineHeight: 1.05, letterSpacing: -2.5 }}>Premium online stores for growing brands</span>
           <span style={{ fontSize: 30, color: "#4B5563", lineHeight: 1.35 }}>Premium themes, One-Click Checkout, UPI and cash on delivery, shipping and GST — on plans that cost less.</span>
         </div>
         <div style={{ display: "flex", gap: 14 }}>

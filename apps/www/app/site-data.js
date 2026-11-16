@@ -4,9 +4,9 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://oyklane.co
 
 // What the site says about itself when Super admin ▸ Website is empty.
 export const SITE_DEFAULTS = {
-  title: "oyklane — premium online stores for Indian brands",
+  title: "oyklane — premium online stores for growing brands",
   description: "Launch an online store with premium themes, One-Click Checkout, UPI and cash on delivery, shipping and GST invoices — on plans that cost less. Free trial, no card needed.",
-  keywords: ["ecommerce website builder India", "online store builder", "create online store India", "one-click checkout", "UPI and COD store", "D2C ecommerce platform", "Shopify alternative India"],
+  keywords: ["ecommerce website builder", "online store builder", "create an online store", "one-click checkout", "UPI and COD store", "D2C ecommerce platform", "Shopify alternative"],
   ogImage: "/og.png",
   reviews: [],
   showcase: [],

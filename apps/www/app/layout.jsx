@@ -27,7 +27,7 @@ export async function generateMetadata() {
       locale: "en_IN",
       title: site.title,
       description: site.description,
-      images: [{ url: site.ogImage, width: 1200, height: 630, alt: "oyklane — premium online stores for Indian brands" }],
+      images: [{ url: site.ogImage, width: 1200, height: 630, alt: "oyklane — premium online stores for growing brands" }],
     },
     twitter: { card: "summary_large_image", title: site.title, description: site.description, images: [site.ogImage] },
     robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },

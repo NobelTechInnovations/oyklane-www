@@ -14,7 +14,7 @@ export function SiteFooter() {
               <OyklaneLogo height={30} />
             </Link>
             <p className="muted" style={{ marginTop: 14, maxWidth: "34ch", fontSize: 14.5 }}>
-              Your own online store, made for selling in India — store, checkout, payments, GST, WhatsApp and ads in one place.
+              Your own online store, made for growing brands — store, checkout, payments, GST, WhatsApp and ads in one place.
             </p>
             <ul className="footer__contact">
               <li>

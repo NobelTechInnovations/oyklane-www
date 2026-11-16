@@ -62,7 +62,7 @@ const BRANDS = [
 // Launch → manage → grow: the order a seller actually goes in.
 const STEPS = [
   { icon: "rocket-launch", title: "Launch", text: "Pick a theme, add products, connect your domain and switch on UPI, cards and cash on delivery. Live the same day.", points: ["Free themes, edited without code", "Your own domain and logo", "UPI, cards, wallets and COD"] },
-  { icon: "package", title: "Manage", text: "Every order, shipment, invoice and customer in one place — built for how Indian orders actually work.", points: ["GST invoices, made for you", "Shipping with COD payouts", "Inventory, rentals and returns"] },
+  { icon: "package", title: "Manage", text: "Every order, shipment, invoice and customer in one place — built for how orders really work: prepaid, cash on delivery and returns.", points: ["GST invoices, made for you", "Shipping with COD payouts", "Inventory, rentals and returns"] },
   { icon: "chart-line-up", title: "Grow", text: "Bring shoppers back and turn browsers into buyers with WhatsApp, ads and an AI sales assistant.", points: ["WhatsApp updates and offers", "Meta and Google ads", "Siyaa AI: personal deals that convert"] },
 ];
 const SELLS = ["Fashion & ethnic wear", "Outfit rentals", "Spices & food", "Beauty & personal care", "Jewellery", "Home & décor"];
@@ -87,7 +87,7 @@ export default async function HomePage() {
               <WordRotator words={PROMISES} />
             </h1>
             <p className="lead">
-              A store that looks like a luxury brand, checkout in one tap, UPI, cards and cash on delivery, and couriers across India — on plans that start at {inr(lowest)} a month.
+              A store that looks like a luxury brand, checkout in one tap, UPI, cards and cash on delivery, and built-in courier shipping — on plans that start at {inr(lowest)} a month.
             </p>
             <div className="hero__ctas">
               <a href={`${APP_URL}/register`} className="btn btn--primary btn--lg">
@@ -143,7 +143,7 @@ export default async function HomePage() {
       {/* ── Real brands ── */}
       <section className="section section--tight" id="brands" aria-labelledby="brands-title">
         <div className="wrap">
-          <h2 className="brands__title" id="brands-title">Indian brands already selling on oyklane</h2>
+          <h2 className="brands__title" id="brands-title">Brands already selling on oyklane</h2>
           <ul className="brands">
             {BRANDS.map((b) => (
               <li key={b.name} className="brand-card">
@@ -325,7 +325,7 @@ export default async function HomePage() {
         <div className="wrap">
           <div className="head">
             <h2 className="h2">Also built in</h2>
-            <p className="lead">The everyday parts of running an online shop in India, ready on day one — plus payments, couriers, pixels and apps connected in a click.</p>
+            <p className="lead">The everyday parts of running an online shop, ready on day one — plus payments, couriers, pixels and apps connected in a click.</p>
             <p className="head__links">
               <Link href="/integrations" className="link-arrow">Every integration</Link>
               <a href={MARKET_URL} className="link-arrow">Themes and apps in the Oyklane Store</a>
@@ -391,7 +391,7 @@ export default async function HomePage() {
           <div className="wrap reviews">
             <div className="reviews__copy">
               <h2 className="h2">Sellers on oyklane, in their words</h2>
-              <p className="lead">Brands across India run their stores, payments and shipping on oyklane.</p>
+              <p className="lead">Growing brands run their stores, payments and shipping on oyklane.</p>
               <Link href="/stores" className="link-arrow">Visit their stores</Link>
             </div>
             <ReviewDeck reviews={site.reviews} />
@@ -465,7 +465,7 @@ function structuredData(pricing, faqs) {
         url: SITE_URL,
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
-        description: "E-commerce platform for Indian brands: premium store themes, One-Click Checkout, UPI and cash on delivery, shipping and GST invoices.",
+        description: "E-commerce platform for growing brands: premium store themes, One-Click Checkout, UPI and cash on delivery, shipping and GST invoices.",
         publisher: { "@id": `${SITE_URL}/#org` },
         offers: pricing.plans.map((p) => ({ "@type": "Offer", name: p.name, price: Number(p.priceMonthly), priceCurrency: "INR", category: "subscription", url: `${SITE_URL}/pricing` })),
       },

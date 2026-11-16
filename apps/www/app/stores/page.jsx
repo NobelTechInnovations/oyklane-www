@@ -3,8 +3,8 @@ import { APP_URL } from "../components/site";
 import { Icon } from "../components/Icon";
 
 export const metadata = {
-  title: { absolute: "Stores on oyklane — Indian brands selling online" },
-  description: "Discover Indian brands that run their online stores on oyklane — fashion, jewellery, food, home and more. Visit their stores and shop direct.",
+  title: { absolute: "Stores on oyklane — brands selling online" },
+  description: "Discover brands that run their online stores on oyklane — fashion, jewellery, food, home and more. Visit their stores and shop direct.",
   alternates: { canonical: "/stores" },
 };
 
@@ -32,7 +32,7 @@ export default async function StoresPage() {
       <section className="wrap page-hero">
         <div>
           <h1 className="h1">Stores on oyklane</h1>
-          <p className="lead">Indian brands that sell online with oyklane. Visit them and shop direct — every order goes straight to the brand.</p>
+          <p className="lead">Brands that sell online with oyklane. Visit them and shop direct — every order goes straight to the brand.</p>
         </div>
       </section>
       <section className="section section--tight">

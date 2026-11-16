@@ -24,7 +24,7 @@ export const INTEGRATIONS = [
   { name: "Cashfree", category: "payments", status: "built", logo: { word: "cashfree" }, text: "UPI, cards, net banking and pay later, with test mode first." },
   { name: "PayU", category: "payments", status: "built", logo: { word: "payu" }, text: "One of India's widest sets of payment methods." },
   { name: "Stripe", category: "payments", status: "built", logo: { brand: "stripe" }, text: "Cards from anywhere in the world.", popular: true },
-  { name: "PayPal", category: "payments", status: "built", logo: { brand: "paypal" }, text: "For buyers outside India." },
+  { name: "PayPal", category: "payments", status: "built", logo: { brand: "paypal" }, text: "For international buyers." },
   { name: "Cash on delivery", category: "payments", status: "built", logo: { word: "cod" }, text: "On or off with one switch; mark paid when the courier settles." },
   { name: "UPI apps", category: "payments", status: "built", logo: { word: "upi" }, text: "Google Pay, PhonePe, Paytm and more through your gateway — with their icons at checkout." },
   { name: "Gift cards", category: "payments", status: "built", logo: { icon: "receipt" }, text: "Sell and accept gift cards; refunds can go back to the card." },

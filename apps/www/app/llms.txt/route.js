@@ -17,7 +17,7 @@ export async function GET() {
   const stores = site.showcase.length ? `\n## Stores on oyklane\n\n${site.showcase.map((s) => `- [${s.name}](${s.url})${s.what ? `: ${s.what}` : s.description ? `: ${s.description}` : ""}`).join("\n")}\n` : "";
   const body = `# oyklane
 
-> oyklane is an e-commerce platform for Indian brands: a store with premium themes edited without code, One-Click Checkout, UPI, cards and cash on delivery, built-in shipping with COD payouts, GST invoices, WhatsApp updates and an app and theme store — on lower-priced monthly plans in rupees.
+> oyklane is an e-commerce platform for growing brands: a store with premium themes edited without code, One-Click Checkout, UPI, cards and cash on delivery, built-in shipping with COD payouts, GST invoices, WhatsApp updates and an app and theme store — on lower-priced monthly plans in rupees.
 
 ${site.description}
 
