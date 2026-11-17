@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { oneClickSummary } from "./plans";
 
 const inr = (n) => `₹${Number(n || 0).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`;
 
@@ -65,7 +66,7 @@ export function Pricing({ data, appUrl }) {
                   <span className="muted"> · {data.codCommissionPercent}% on cash on delivery</span>
                 </li>
                 <li className="plan__optional">
-                  <Tick /> One-Click Checkout: no upfront fee, +{data.oneClickFeePercent}% only on orders paid through it
+                  <Tick /> One-Click Checkout: {p.oneClickFeePercent > 0 ? `no upfront fee, +${p.oneClickFeePercent}% only on orders paid through it` : "included free"}
                 </li>
               </ul>
               <a href={`${appUrl}/register`} className={`btn ${featured ? "btn--primary" : "btn--ghost"}`}>
@@ -77,7 +78,7 @@ export function Pricing({ data, appUrl }) {
       </div>
       <p className="plans__note">
         {data.trialDays}-day free trial{data.introEnabled ? `, then ${inr(data.introPrice)} for your first month` : ""} on any plan. Prices exclude 18% GST.
-        One-Click Checkout has no upfront or setup fee — it adds {data.oneClickFeePercent}% only to orders paid through it.
+        One-Click Checkout has no upfront or setup fee: it&apos;s {oneClickSummary(data.plans)}, only on orders paid through it.
       </p>
     </>
   );

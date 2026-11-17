@@ -21,7 +21,7 @@ const SHOPIFY = [
 
 export default async function VsShopifyPage() {
   const pricing = await getPlans();
-  const oyklane = pricing.plans.map(({ key, name, priceMonthly, priceYearly, commissionPercent }) => ({ key, name, priceMonthly, priceYearly, commissionPercent }));
+  const oyklane = pricing.plans.map(({ key, name, priceMonthly, priceYearly, commissionPercent, oneClickFeePercent }) => ({ key, name, priceMonthly, priceYearly, commissionPercent, oneClickFeePercent }));
 
   return (
     <>
@@ -37,7 +37,7 @@ export default async function VsShopifyPage() {
       </section>
 
       <section className="wrap" style={{ paddingBottom: 60 }}>
-        <Calculator oyklane={oyklane} shopify={SHOPIFY} oneClickFeePercent={pricing.oneClickFeePercent} codCommissionPercent={pricing.codCommissionPercent} />
+        <Calculator oyklane={oyklane} shopify={SHOPIFY} codCommissionPercent={pricing.codCommissionPercent} />
       </section>
 
       <section className="section section--tight">

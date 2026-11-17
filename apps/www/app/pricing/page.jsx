@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Pricing } from "../Pricing";
-import { getPlans } from "../plans";
+import { getPlans, oneClickFee, oneClickSummary } from "../plans";
 import { Icon, I } from "../components/Icon";
 import { APP_URL, inr } from "../components/site";
 
@@ -73,7 +73,7 @@ export default async function PricingPage() {
             <div className="card">
               <h3>One-Click Checkout</h3>
               <p>
-                <strong>+{pricing.oneClickFeePercent}% per order</strong> paid through it, on top of your plan&apos;s fee. Optional and free to install.
+                <strong>Free on Pro.</strong> Otherwise {oneClickSummary(plans.filter((p) => p.oneClickFeePercent > 0))} per order paid through it, on top of your plan&apos;s fee. Optional and free to install.
               </p>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default async function PricingPage() {
                       <span className="compare__note">Added to the fee only on orders paid through it.</span>
                     </td>
                     {plans.map((p) => (
-                      <td key={p.key}>+{pricing.oneClickFeePercent}% per order</td>
+                      <td key={p.key}>{oneClickFee(p)}</td>
                     ))}
                   </tr>
                   <tr>

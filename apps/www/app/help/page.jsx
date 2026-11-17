@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPlans } from "../plans";
+import { getPlans, oneClickSummary } from "../plans";
 import { Icon, I } from "../components/Icon";
 import { APP_URL, SUPPORT_EMAIL, WHATSAPP, inr } from "../components/site";
 
@@ -45,7 +45,7 @@ export default async function HelpPage() {
         ],
         [
           "What does One-Click Checkout cost?",
-          `It's an optional app, free to install. It adds ${pricing.oneClickFeePercent}% to the fee on orders paid through it.`,
+          `It's an optional app, free to install. On orders paid through it, it's ${oneClickSummary(pricing.plans)}.`,
         ],
         ["Are prices with GST?", "Plan prices are before 18% GST, and every bill comes with a GST invoice."],
       ],

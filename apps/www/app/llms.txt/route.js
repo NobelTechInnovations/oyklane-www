@@ -1,4 +1,4 @@
-import { getPlans } from "../plans";
+import { getPlans, oneClickSummary } from "../plans";
 import { getSite, SITE_URL } from "../site-data";
 import { SUPPORT_EMAIL, WHATSAPP } from "../components/site";
 
@@ -26,7 +26,7 @@ ${site.description}
 ${plans}
 
 - Free trial: ${pricing.trialDays} days, no card needed.${pricing.introEnabled ? ` Then ${inr(pricing.introPrice)} for the first month.` : ""}
-- One-Click Checkout: no upfront or setup fee; ${pricing.oneClickFeePercent}% only on orders paid through it.
+- One-Click Checkout: no upfront or setup fee; ${oneClickSummary(pricing.plans)}, only on orders paid through it.
 - No setup fee and no product limits on any plan.
 
 ## What a store gets
