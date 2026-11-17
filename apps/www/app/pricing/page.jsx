@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Pricing } from "../Pricing";
-import { getPlans, oneClickFee, oneClickSummary } from "../plans";
+import { getPlans, oneClickFee, oneClickSummary, codFee } from "../plans";
 import { Icon, I } from "../components/Icon";
 import { APP_URL, inr } from "../components/site";
 
@@ -19,7 +19,7 @@ export default async function PricingPage() {
 
   const faq = [
     ["Is there a free trial?", `Yes — ${pricing.trialDays} days on any plan${pricing.introEnabled ? `, then ${inr(pricing.introPrice)} for your first month` : ""}. You choose autopay (UPI or card) to carry on; nothing is charged during the trial.`],
-    ["What's the fee per order?", `A small percentage of each paid order — ${plans.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} — and ${pricing.codCommissionPercent}% on cash-on-delivery orders, on every plan. It's billed with your plan, never taken from your payments.`],
+    ["What's the fee per order?", `A small percentage of each paid order — ${plans.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} — and ${codFee(pricing.codCommissionPercent)}, on every plan. It's billed with your plan, never taken from your payments.`],
     ["Can I change plans later?", "Anytime. Upgrades apply straight away; downgrades at the end of the period you've paid for."],
     ["Do apps cost extra?", "Most apps are free, including Flow and One-Click Checkout (which adds a small fee on orders paid through it). Paid apps show their price before you install; Phone Login is free to install — WhatsApp codes are free and SMS codes cost ₹0.50 each."],
     ["What do WhatsApp messages cost?", "Free + usage. oyklane's WhatsApp tools are free, and login codes and order updates sent from oyklane's number are free too. Offers and broadcasts go from your own WhatsApp Business number, and you pay only for what you send — Meta bills you directly at its own rates."],
@@ -73,7 +73,7 @@ export default async function PricingPage() {
             <div className="card">
               <h3>One-Click Checkout</h3>
               <p>
-                <strong>Free on Pro.</strong> Otherwise {oneClickSummary(plans.filter((p) => p.oneClickFeePercent > 0))} per order paid through it, on top of your plan&apos;s fee. Optional and free to install.
+                It&apos;s {oneClickSummary(plans)}, only on orders paid through it, on top of your plan&apos;s fee. Optional and free to install.
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default async function PricingPage() {
                   <tr>
                     <td>Fee per cash-on-delivery order</td>
                     {plans.map((p) => (
-                      <td key={p.key}>{pricing.codCommissionPercent}%</td>
+                      <td key={p.key}>{Number(pricing.codCommissionPercent) > 0 ? `${pricing.codCommissionPercent}%` : "No fee"}</td>
                     ))}
                   </tr>
                   <tr>

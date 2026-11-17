@@ -2,17 +2,17 @@ const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://api.oyklane.com").r
 
 // Shown only if the API can't be reached while the page is built.
 const FALLBACK = {
-  trialDays: 3,
+  trialDays: 7,
   introEnabled: true,
   introPrice: 49,
   annualDiscountPercent: 20,
-  oneClickFeePercent: 0.3,
-  codCommissionPercent: 0.5,
+  oneClickFeePercent: 0,
+  codCommissionPercent: 0,
   whatsappMessagePrice: 0.5,
   plans: [
-    { key: "starter", name: "Starter", tagline: "Everything to open your store.", priceMonthly: 799, priceYearly: 7670.4, commissionPercent: 2, oneClickFeePercent: 0.5, staffLimit: 2, features: [] },
-    { key: "growth", name: "Growth", tagline: "Marketing, reports and GST invoices for a growing brand.", priceMonthly: 1899, priceYearly: 18230.4, commissionPercent: 1.3, oneClickFeePercent: 0.3, staffLimit: 10, features: [] },
-    { key: "pro", name: "Pro", tagline: "The lowest fees, API access and priority support.", priceMonthly: 2999, priceYearly: 28790.4, commissionPercent: 0.5, oneClickFeePercent: 0, staffLimit: 30, features: [] },
+    { key: "starter", name: "Starter", tagline: "Everything to open your store.", priceMonthly: 499, priceYearly: 4790.4, commissionPercent: 2, oneClickFeePercent: 0.5, staffLimit: 2, features: [] },
+    { key: "growth", name: "Growth", tagline: "Marketing, reports and GST invoices for a growing brand.", priceMonthly: 1599, priceYearly: 15350.4, commissionPercent: 1, oneClickFeePercent: 0, staffLimit: 10, features: [] },
+    { key: "pro", name: "Pro", tagline: "The lowest fees, API access and priority support.", priceMonthly: 3999, priceYearly: 38390.4, commissionPercent: 0.5, oneClickFeePercent: 0, staffLimit: 30, features: [] },
   ],
 };
 
@@ -41,12 +41,24 @@ export function oneClickFee(plan) {
   return plan.oneClickFeePercent > 0 ? `+${plan.oneClickFeePercent}% per order` : "Free";
 }
 
-/** "free on Pro, 0.3% on Growth and 0.5% on Starter" */
+const join = (parts) => (parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts.at(-1)}` : parts[0] || "");
+
+/** "free on Growth and Pro, and 0.5% on Starter" — from the live plans, so
+ * a fee changed in Super admin reads right everywhere. */
 export function oneClickSummary(plans) {
-  const parts = [...plans]
-    .sort((a, b) => a.oneClickFeePercent - b.oneClickFeePercent)
-    .map((p) => (p.oneClickFeePercent > 0 ? `${p.oneClickFeePercent}% on ${p.name}` : `free on ${p.name}`));
-  return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts.at(-1)}` : parts[0] || "";
+  const free = plans.filter((p) => !(p.oneClickFeePercent > 0)).map((p) => p.name);
+  const byFee = new Map();
+  for (const p of [...plans].filter((x) => x.oneClickFeePercent > 0).sort((a, b) => a.oneClickFeePercent - b.oneClickFeePercent)) {
+    byFee.set(p.oneClickFeePercent, [...(byFee.get(p.oneClickFeePercent) || []), p.name]);
+  }
+  if (!byFee.size) return "free on every plan";
+  const fees = join([...byFee].map(([fee, names]) => `${fee}% on ${join(names)}`));
+  return free.length ? `free on ${join(free)}, and ${fees}` : fees;
+}
+
+/** "no fee on cash on delivery" or "0.5% on cash-on-delivery orders". */
+export function codFee(percent) {
+  return Number(percent) > 0 ? `${percent}% on cash-on-delivery orders` : "no fee on cash-on-delivery orders";
 }
 
 /** The plans exactly as Super admin ▸ Plans has them (the public sign-up

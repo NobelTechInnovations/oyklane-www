@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPlans } from "../plans";
+import { getPlans, oneClickSummary, codFee } from "../plans";
 import { Icon, I } from "../components/Icon";
 import { APP_URL } from "../components/site";
 import { Calculator } from "./Calculator";
@@ -37,7 +37,7 @@ export default async function VsShopifyPage() {
       </section>
 
       <section className="wrap" style={{ paddingBottom: 60 }}>
-        <Calculator oyklane={oyklane} shopify={SHOPIFY} codCommissionPercent={pricing.codCommissionPercent} />
+        <Calculator oyklane={oyklane} shopify={SHOPIFY} codCommissionPercent={pricing.codCommissionPercent} oneClickText={oneClickSummary(pricing.plans)} />
       </section>
 
       <section className="section section--tight">
@@ -47,7 +47,7 @@ export default async function VsShopifyPage() {
             <ul>
               <li>Plan prices on both are before 18% GST.</li>
               <li>
-                <strong>oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid online order, and {pricing.codCommissionPercent}% on cash-on-delivery orders. Orders that are returned or cancelled pay no fee.
+                <strong>oyklane</strong>: {oyklane.map((p) => `${p.name} ${p.commissionPercent}%`).join(", ")} of every paid online order, and {codFee(pricing.codCommissionPercent)}. Orders that are returned or cancelled pay no fee.
               </li>
               <li>
                 <strong>Shopify</strong>: {SHOPIFY.map((p) => `${p.feePercent}% on ${p.name}`).join(", ")} of orders paid through a gateway such as Razorpay, PayU or Cashfree.

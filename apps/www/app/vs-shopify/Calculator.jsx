@@ -11,7 +11,7 @@ const SALES_STEPS = [50000, 100000, 200000, 300000, 500000, 1000000, 2000000, 50
  * are the same on both and left out. oyklane's fee is on every paid order,
  * a fixed lower rate on cash on delivery; Shopify's is on online payments only.
  */
-export function Calculator({ oyklane, shopify, codCommissionPercent = 0.5 }) {
+export function Calculator({ oyklane, shopify, codCommissionPercent = 0, oneClickText }) {
   const [sales, setSales] = useState(200000);
   const [onlinePct, setOnlinePct] = useState(60);
   const [yearly, setYearly] = useState(false);
@@ -56,7 +56,7 @@ export function Calculator({ oyklane, shopify, codCommissionPercent = 0.5 }) {
             <input type="checkbox" checked={yearly} onChange={(e) => setYearly(e.target.checked)} /> Pay yearly (both)
           </label>
           <label className="calc__check">
-            <input type="checkbox" checked={oneClick} onChange={(e) => setOneClick(e.target.checked)} /> Use oyklane&apos;s One-Click Checkout (free on Pro, a small fee per order on other plans)
+            <input type="checkbox" checked={oneClick} onChange={(e) => setOneClick(e.target.checked)} /> Use oyklane&apos;s One-Click Checkout ({oneClickText || "a small fee per order on some plans"})
           </label>
         </div>
       </div>

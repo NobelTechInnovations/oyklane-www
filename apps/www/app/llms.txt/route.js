@@ -1,4 +1,4 @@
-import { getPlans, oneClickSummary } from "../plans";
+import { getPlans, oneClickSummary, codFee } from "../plans";
 import { getSite, SITE_URL } from "../site-data";
 import { SUPPORT_EMAIL, WHATSAPP } from "../components/site";
 
@@ -12,7 +12,7 @@ const inr = (n) => `₹${Number(n || 0).toLocaleString("en-IN", { maximumFractio
 export async function GET() {
   const [pricing, site] = await Promise.all([getPlans(), getSite()]);
   const plans = pricing.plans
-    .map((p) => `- ${p.name}: ${inr(p.priceMonthly)}/month + 18% GST (${inr(p.priceYearly)}/year). ${p.commissionPercent}% fee per paid online order, ${pricing.codCommissionPercent}% on cash-on-delivery orders. ${p.tagline || ""}`.trim())
+    .map((p) => `- ${p.name}: ${inr(p.priceMonthly)}/month + 18% GST (${inr(p.priceYearly)}/year). ${p.commissionPercent}% fee per paid online order, ${codFee(pricing.codCommissionPercent)}. ${p.tagline || ""}`.trim())
     .join("\n");
   const stores = site.showcase.length ? `\n## Stores on oyklane\n\n${site.showcase.map((s) => `- [${s.name}](${s.url})${s.what ? `: ${s.what}` : s.description ? `: ${s.description}` : ""}`).join("\n")}\n` : "";
   const body = `# oyklane

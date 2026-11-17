@@ -63,7 +63,7 @@ export function Pricing({ data, appUrl }) {
                 </li>
                 <li>
                   <Tick /> {p.commissionPercent}% fee per paid order
-                  <span className="muted"> · {data.codCommissionPercent}% on cash on delivery</span>
+                  <span className="muted"> · {Number(data.codCommissionPercent) > 0 ? `${data.codCommissionPercent}% on cash on delivery` : "no fee on cash on delivery"}</span>
                 </li>
                 <li className="plan__optional">
                   <Tick /> One-Click Checkout: {p.oneClickFeePercent > 0 ? `no upfront fee, +${p.oneClickFeePercent}% only on orders paid through it` : "included free"}
