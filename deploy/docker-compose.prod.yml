@@ -1,0 +1,18 @@
+# Website on the AWS server: oyklane.com, www.oyklane.com.
+# HTTPS comes from the shared proxy (~/apps/proxy), which reaches it as
+# "oyklane-www" on the "web" network.
+# Run from the repo root:  docker compose -f deploy/docker-compose.prod.yml up -d --build
+name: oyklane-www
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_APP_URL: https://store.oyklane.com
+    env_file: ../.env           # shared secrets copied from the API's .env by the setup script (never committed)
+    restart: unless-stopped
+    networks:
+      web: { aliases: [oyklane-www] }
+networks:
+  web: { external: true }
